@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ramadouna's Dashboard</title>
-<meta name="description" content="لوحة احترافية لنسخ النصوص وفتح الروابط والملفات ونسخ مسارات المجلدات بنقرة واحدة." />
+<title>لوحة النسخ السريع</title>
+<meta name="description" content="لوحة احترافية لنسخ النصوص وفتح القوالب البريدية والملفات بنقرة واحدة." />
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,8 +67,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16L12 2z"/></svg>
       </div>
       <div>
-        <h1 class="text-2xl font-extrabold tracking-tight text-ink-900">Ramadouna's Dashboard</h1>
-        <p class="text-sm text-ink-500 mt-0.5">المراجعة النهائية في الموافقات الطبية</p>
+        <h1 class="text-2xl font-extrabold tracking-tight text-ink-900">لوحة النسخ السريع</h1>
+        <p class="text-sm text-ink-500 mt-0.5">انقر على أي بطاقة لتنفيذ إجراء فوري: نسخ نص، فتح بريد، أو تشغيل ملف.</p>
       </div>
     </div>
 
@@ -79,7 +79,7 @@
 
 <!-- MAIN -->
 <main class="max-w-7xl mx-auto px-5 py-8">
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
     <div>
       <h2 id="groupTitle" class="text-xl font-bold text-ink-900"></h2>
       <p id="groupDesc" class="text-sm text-ink-500 mt-0.5"></p>
@@ -88,11 +88,6 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-ink-500 absolute top-1/2 -translate-y-1/2 end-3.5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="searchInput" type="text" placeholder="ابحث ضمن هذه المجموعة..." class="w-full h-11 rounded-lg border border-ink-300 bg-white pe-10 ps-3 text-sm shadow-card focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
     </div>
-  </div>
-
-  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
-    <nav id="subtabs" class="hidden flex-wrap gap-2"></nav>
-    <div id="resultCount" class="text-xs font-bold text-ink-500"></div>
   </div>
 
   <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
@@ -106,344 +101,83 @@
 /* ============================================================
    DATA — أضف أو عدّل المحتوى هنا
    أنواع البطاقات:
-     - "text"   : ينسخ النص إلى الحافظة
-     - "email"  : يفتح برنامج البريد (mailto)
-     - "link"   : يفتح رابط ويب في تبويب جديد
-     - "file"   : يفتح ملفًا محليًا/نسبيًا في تبويب جديد
-     - "folder" : ينسخ مسار مجلد محلي أو مسار شبكة
+     - "text"  : ينسخ النص إلى الحافظة
+     - "email" : يفتح برنامج البريد (mailto)
+     - "file"  : يفتح ملفًا في تبويب جديد (يجب وضع الملف بجانب index.html)
 ============================================================ */
 const GROUPS = [
   {
-    id: "tatsh",
-    title: "TATSH REPLIES",
-    description: "ردود Tatsh جاهزة ومقسّمة حسب حالة الطلب",
-    filters: [
-      { id: "approved", title: "حالة الموافقة" },
-      { id: "rejected", title: "حالة الرفض" },
-      { id: "pending", title: "قيد الانتظار" },
-    ],
+    id: "greetings",
+    title: "التحيات",
+    description: "عبارات الترحيب والافتتاح",
     items: [
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "بدون كارنيه مع الاطلاع على أصل تحقيق الشخصية أو الكارنيه المنتهي" },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع الرجوع الى نيكست كير في حالة تخطي الخدمات ...... جنيه" },
-	        { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "السلام عليكم ورحمة الله وبركاته،\nنشكركم على تواصلكم معنا." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "لا مانع من عمل نظارة طبية بعدسات طبية مع تحمل ****من قيمه النظاره على ان يكون اقصى تحمل لنيكست كير **** جنيه بعد تحمل العميل (بعد تطبيق نسبة خصم التعاقد على الثمن الاصلى للنظاره) مع ارفاق اصل قياسات النظر حتي يتم اعتماد المطالبة" },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع ضرورة ارفاق اشعة الاكس راى مع الفاتورة لاعتماد المطالبة " },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "العميل مميز برجاء تقديم الخدمة مباشرة بعد الاطلاع علي الكارنية و تاريخ الصلاحية" },	  
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال تقرير الأشعة في حالة طلب موافقات اخري متعلقة بالتشخيص ." },
-	  { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال نتائج التحاليل في حالة طلب موافقات اخري متعلقة بالتشخيص ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " - برجاء ارسال تقرير السونار أو تحليل الحمل الرقمى في حالة طلب موافقات اخري متعلقة بمتابعة الحمل . " },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع تحمل العميل***  على قيمه الخدمات و الرجوع لنيكست كير اذا تعدت تكلفه الخدمات ***جنيه بعد تحمل العميل ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع تحمل العميل *** على قيمه الخدمات على ان يكون اقصى تحمل  لنيكست كير **** جنية بعد تحمل العميل ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع الرجوع لنكست كير فى حالة تخطى القيمة *** جنية ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "بحد أقصي ** جنية ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " يرجي الصرف حسب الجرعه والمده المحدده في حالة سريان الكارت التأميني او صرف جرعه كافيه حتي انتهاء الكارت التأميني في حاله قرب انتهائه" },
-      { type: "text", filter: "approved", title: "رد اعتماد نهائي", text: "يتم ا5موافقة علي البديل بشرط أن يكون نفس المادة الفعالة , نفس الشكل الدوائي , نفس التركيز وفرق السعر لا يزيد عن 10 جنية .  " },
-      { type: "text", filter: "approved", title: "رد قبول مشروط", text: "تمت الموافقة المبدئية على الطلب، على أن يتم استكمال المتطلبات المتبقية قبل التنفيذ." },
-      { type: "text", filter: "approved", title: "رد إغلاق بعد الموافقة", text: "العميل مميز برجاء تقديم الخدمة مباشرة بعد الاطلاع علي الكارنية و تاريخ الصلاحية ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "الخدمات المطلوبه لا تحتاج موافقه مسبقه علي الا تتعدي الموافقه 1000 جم عدا الاشعه المقطعيه والرنين بدون صبغه يتم عملها بدون موافقه مسبقه ولا يخضعوا لسعر محدد .." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء الرجوع لخطاب تعليمات الخاص بنيكست كير وتقديم الخدمه للعميل دون تاخير ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " موافقة طبية و سعرية بقيمة *** جنية ." },
-	  
-
-      { type: "text", filter: "rejected", title: "رد رفض لعدم اكتمال البيانات", text: "برجاء الرجوع الي قسم الموارد البشرية الخاص بكم ." },
-      { type: "text", filter: "rejected", title: "رد رفض حسب السياسة", text: "عفواً .. الاجراء المطلوب غير مغطي تأمينياً " },
-      { type: "text", filter: "rejected", title: "رد إعادة الطلب", text: "برجاء الارسال عن طريق الايميل." },
-      { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الحد الاقصي للتغطية التأمينية للعميل." },
-      { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الوعاء التأميني المتاح للأمراض المزمنة" },
-
-
-      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال تقرير الأشعة الداعم / الموضح للتشخيص . " },
-      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج التحاليل الداعمة / الموضحة للتشخيص ( مع ذكر التحليل المطلوب في حالة طلب تحليل محدد ) . " },
-      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج الفحوصات الداعمة / الموضحة للتشخيص ." },	  
-      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال تقرير السونار أو تحليل الحمل الرقمي ." },
-      { type: "text", filter: "pending", title: "رد انتظار اعتماد", text: "يرجي ارسال الطلب عن طريق الشخص المختص." },
-      { type: "text", filter: "pending", title: "رد احتياج معلومات", text: "الحالة قيد المراجعة و سيتم الرد في أقرب وقت ممكن ." },
-      { type: "text", filter: "pending", title: "رد متابعة داخلية", text: "برجاء ايضاح هل التحاليل ما قبل العمليه؟ برجاء ارسال طلب العملية مع التحاليل مع تحديد مقدم خدمة و فرع للعملية و تحاليل ما قبل العملية يتم الموافقة عليها بعد الموافقة علي العملية ." },
-	  
+      { type: "text", title: "تحية رسمية", text: "السلام عليكم ورحمة الله وبركاته،\nنشكركم على تواصلكم معنا." },
+      { type: "text", title: "صباح الخير", text: "صباح الخير، كيف يمكنني مساعدتك اليوم؟" },
+      { type: "text", title: "مساء الخير", text: "مساء الخير، يسعدنا تواصلك معنا." },
+      { type: "text", title: "ترحيب ودي", text: "أهلاً وسهلاً بك، نتمنى لك يوماً سعيداً." },
     ],
   },
-  
-   {
+  {
+    id: "support",
+    title: "الدعم الفني",
+    description: "ردود جاهزة لطلبات الدعم",
+    items: [
+      { type: "text", title: "تم استلام طلبك", text: "شكراً لتواصلك مع الدعم الفني. تم استلام طلبك وسيقوم أحد أعضاء فريقنا بالرد خلال 24 ساعة." },
+      { type: "text", title: "طلب لقطة شاشة", text: "هل يمكنك إرسال لقطة شاشة للمشكلة مع توضيح الخطوات التي أدت إليها؟" },
+      { type: "text", title: "تم حل المشكلة", text: "يسرنا إعلامك بأنه تم حل المشكلة. لا تتردد في التواصل معنا في حال احتجت إلى أي مساعدة إضافية." },
+      { type: "text", title: "خطوات إعادة التشغيل", text: "يرجى تجربة إعادة تشغيل التطبيق ومسح ذاكرة التخزين المؤقت للمتصفح، ثم إعلامنا في حال استمرت المشكلة." },
+      { type: "text", title: "قيد المتابعة", text: "نود إعلامك بأن طلبك قيد المتابعة من قبل الفريق المختص، وسنوافيك بالمستجدات في أقرب وقت." },
+    ],
+  },
+  {
     id: "emails",
-    title: "Emails",
+    title: "قوالب البريد",
     description: "قوالب بريدية تفتح في برنامج البريد مباشرةً",
     items: [
-  { 
-    type: "email", 
-    title: "External E-mails to the Customers", 
-    description: "Send email to customers", 
-    to: "", 
-    cc: "PrecertRep.EG@nextcarehealth.com", 
-    subject: "", 
-    body: "Dear valued client\nGreeting from Nextcare\nKindly find the attached file\nPlease don't reply back to this E-mail, for further requests or inquiries kindly send to the official E-mail mentioned on the medical card" 
-  },
-  { 
-    type: "email", 
-    title: "Cancellation of Authorized Claims", 
-    description: "Request cancellation of approval", 
-    to: "NC-EGY ProviderCare-Support@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "IP / OP Cancellation - Card no.", 
-    body: "Dear Team\nKindly confirm that the attached approval has not been used as per the client request\nProvider:\nBranch:\nApproval no.:\nCard no.:\nCustomer Mobile no.:\nReason of cancellation: to change provider to … or didn’t use it.\nN.B: In case the approval was partially used, please mention the cost of the used services." 
-  },
-  { 
-    type: "email", 
-    title: "Correction of Processed or Settled Claim", 
-    description: "Request correction of claim", 
-    to: "Amira.Mourad@nextcarehealth.com; Bishoy.khairy@nextcarehealth.com; Enas.Abdelnasser@nextcarehealth.com; Olivia.Arnest@nextcarehealth.com; Emad.Gamil@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com; Marwa.Azeem@nextcarehealth.com; Mostafa.Khedr@nextcarehealth.com", 
-    subject: "Cancellation – Approval no.", 
-    body: "Dear Team,\nPlease note the below Approval is (Processed / Settled) while we got confirmation that it is not used as per the attached.\nCard Number:\nApproval Number:" 
-  },
-  { 
-    type: "email", 
-    title: "Asoap Forms", 
-    description: "Request Asoap Forms for provider", 
-    to: "NC-EGY-ASOAPSrequest@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Asoap forms", 
-    body: "Dear Team,\nKindly provide the below provider with Asoap Forms.\n[Provider details inserted here]" 
-  },
-  { 
-    type: "email", 
-    title: "Phone no. for Case Management", 
-    description: "Send member phone for CM", 
-    to: "NC-EGY-Case_management@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Phone no. for Case Management", 
-    body: "Dear Team,\nKindly find the Member’s phone no. below for the Case Management requested.\nPhone no.:\nCard no.:\nApproval no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Missed Item", 
-    description: "Route to Chronic - Missed item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise the below member has missed items on his chronic medications on (Month).\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Cancelled Item", 
-    description: "Route to Chronic - Cancelled item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below cancelled items from the member’s PK.\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Request – Unsent Medication", 
-    description: "Route to Chronic - Unsent to Yodawy", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below member’s PK as the member clarified that Yodawy has no medication for him even though it exists in his PK.\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Altered Item", 
-    description: "Route to Chronic - Altered item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly note that the member’s prescription contains (…) while we approved (…).\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – No PK on System", 
-    description: "Route to Chronic - No PK", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below member’s PK as it was not refilled for (Month).\nCard no.:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Pending Provider/Branch", 
-    description: "Route to Chronic - Change provider", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly note that the member requests his approval to be directed to (Provider & Branch).\nCard no.:\nClaim Ref.:" 
-  },
-  { 
-    type: "email", 
-    title: "Deactivated Provider", 
-    description: "Deactivated on TATSH", 
-    to: "NTW.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Deactivated Provider", 
-    body: "Dear Team,\nKindly advise about the below case where the provider exists on network sheet while it is deactivated on TATSH.\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Dismissing Provider", 
-    description: "Provider doesn't deal with Nextcare", 
-    to: "CustomerCare.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Dismissing provider + Provider TATSH Name", 
-    body: "Dear Team,\nKindly note that we received a call from a client notifying that the mentioned provider does not deal with Nextcare even though it is mentioned in the client’s network sheet.\nCard no.:\nTime of incident:\nCustomer Phone no.:\nMember’s Email:" 
-  },
-  { 
-    type: "email", 
-    title: "Provider Not in Network Sheet", 
-    description: "Contracted but not in sheet", 
-    to: "NTW.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Provider is not existed in Network sheet", 
-    body: "Dear Team,\nKindly advise if (Provider) is contracted with Nextcare as it is not found in network sheet while the provider confirmed they are active.\nProvider:\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Internal Request – Route IP/OP", 
-    description: "Route IP or OP request", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Route IP / OP", 
-    body: "Dear Team,\nRoute IP / OP\nCard no.:\nThe member needs:\nSender mail:" 
-  },
-  { 
-    type: "email", 
-    title: "New Contract – New Company", 
-    description: "New company sales lead", 
-    to: "Karim.Hamed@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "New Contract – New Company", 
-    body: "Dear Team,\nKindly note that we received a call from (Name) who wants to contract with Nextcare for the staff.\nPhone no.:\nNumber of employees:\nCompany Name:" 
-  },
-  { 
-    type: "email", 
-    title: "Lost Card", 
-    description: "Lost wallet/card found", 
-    to: "NC-EGY-CR@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Lost Card", 
-    body: "Dear Team,\nKindly note that we received a call from (Mr. Name) who found the wallet of our insured member (Card no. …) and wants to return it.\nCaller’s Phone no.:\nPayer:\nPolicy:" 
-  },
-  { 
-    type: "email", 
-    title: "TATSH User Locked", 
-    description: "Unlock TATSH user", 
-    to: "Informationsecurity@nextcarehealth.com", 
-    cc: "NC-EGP_CC-LS@nextcarehealth.com", 
-    subject: "TATSH User locked", 
-    body: "Dear Team,\nKindly support to unlock the below User.\nTATSH User:\nIssue type: User Locked\nBusiness Unit: Egypt\nSystem: TATSH" 
-  },
-  { 
-    type: "email", 
-    title: "Duplicated Card", 
-    description: "Check duplicated card on TATSH", 
-    to: "PRD.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Duplicated Card – Card no.", 
-    body: "Dear Team,\nKindly check the below and the attachment as the card is duplicated on TATSH.\nCard Number:" 
-  },
-  { 
-    type: "email", 
-    title: "Sending Phone no. to SMO Team", 
-    description: "Contact member for SMO", 
-    to: "Kareem.Othman@nextcarehealth.com; NC-EGY-SMO@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "SMO – Card no.", 
-    body: "Dear Team,\nKindly support to contact the member’s phone no. mentioned below.\nPhone no.:\nCard no.:\nApproval no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Lumi Delivery – Card no.", 
-    description: "Yodawy escalation", 
-    to: "h.ahmed@yodawy.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Lumi Delivery – Card no.", 
-    body: "Dear Yodawy Team,\nKindly support to check the member as he contacted Yodawy via “Get Help” but his issue was not resolved and still needs support.\nPhone no.:\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Egypt Air RI Call Back", 
-    description: "Follow up Egypt Air declined requests", 
-    to: "NC-EGY_Remb-Leaders@nextcarehealth.com; Nada.Reda@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com; NC-EGP_CC-LS@nextcarehealth.com; Sandra.Hany@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com; Karim.Hamed@nextcarehealth.com", 
-    subject: "Follow up request ( Egypt Air ) - Card no.", 
-    body: "Dears,\nKindly contact the client regarding her declined requests ASAP.\nCard no. \nPhone no. \nClain no. " 
-  }
-],
-  },
-  
-  {
-    id: "links",
-    title: "روابط المواقع",
-    description: "روابط عمل سريعة تُفتح في تبويب جديد",
-    items: [
-      { type: "link", title: "TATSH", description: "Tatsh", href: "https://backoffice-egp.nextcarehealth.com/#/" },
-      { type: "link", title: "PULSE", description: "Proovider Pulse", href: "https://pulse-egp.nextcarehealth.com/Login2.aspx?ReturnUrl=%2F" },
-      { type: "link", title: "ODOO", description: "Yodawy Odoo", href: "https://odoo.yodawy.com/web/database/selector#cids=2&home=" },
-      { type: "link", title: "Precert Replies", description: "Precert Replies Outlook", href: "https://mailegy.nextcarehealth.com/owa/auth/logon.aspx?replaceCurrent=1&url=https%3a%2f%2fmailegy.nextcarehealth.com%2fowa%2f" },
-      { type: "link", title: "IRIS", description: "Iris", href: "https://iris-egp.nextcarehealth.com/layout/new-claim" },
-      { type: "link", title: "Veerloop", description: "Provider Bot", href: "https://nextcareprovider.mena.verloop.io/v2/live-chats/0/116847?activeRoomStatus=1" },
-      { type: "link", title: "Success Factor", description: "Success Factor", href: "https://performancemanager5.successfactors.eu/sf/start?_s.crb=RGhL9CBMMxjWUPJS9JwplmD2J5IEJXwkuiHlFHtWTYU%253d" },	  
-      { type: "link", title: "HR Works", description: "HR Works", href: "https://hr-ess.nextcarehealth.com/Home/Index" },
+      {
+        type: "email",
+        title: "طلب اجتماع",
+        description: "بريد لطلب موعد اجتماع لمناقشة المشروع.",
+        to: "client@example.com",
+        subject: "طلب اجتماع لمناقشة المشروع",
+        body: "مرحباً،\n\nأتمنى أن يصلك هذا البريد وأنت بخير. أود تحديد موعد اجتماع في أقرب وقت يناسبك لمناقشة تفاصيل المشروع.\n\nمع خالص الشكر،\n[الاسم]"
+      },
+      {
+        type: "email",
+        title: "متابعة طلب",
+        description: "بريد متابعة لطلب سابق لم يُرَدّ عليه.",
+        to: "support@example.com",
+        subject: "متابعة بخصوص الطلب السابق",
+        body: "مرحباً،\n\nأتابع معكم بخصوص الرسالة السابقة. يرجى إعلامي في حال احتجتم إلى أي معلومات إضافية.\n\nشكراً لتعاونكم،\n[الاسم]"
+      },
+      {
+        type: "email",
+        title: "تأكيد استلام",
+        description: "تأكيد استلام رسالة من العميل.",
+        to: "",
+        subject: "تأكيد استلام رسالتكم",
+        body: "نود تأكيد استلامنا لرسالتكم، وسنقوم بالرد عليها في أقرب وقت ممكن.\n\nمع التحية،\n[الاسم]"
+      },
+      {
+        type: "email",
+        title: "رسالة شكر",
+        description: "بريد شكر بعد اجتماع أو تعاون.",
+        to: "",
+        subject: "شكراً لكم",
+        body: "شكراً لكم على وقتكم واهتمامكم. أتطلع إلى الرد منكم قريباً.\n\nمع خالص التقدير،\n[الاسم]"
+      },
     ],
   },
-    
   {
     id: "files",
-    title: "الملفات والعهود",
-    description: "ملفات محلية تُفتح من نفس مجلد index.html أو من مسارات نسبية",
+    title: "الملفات والسياسات",
+    description: "ملفات PDF تُفتح في تبويب جديد. ضع الملفات في نفس مجلد index.html.",
     items: [
-      { type: "file", title: "ملف PDF تجريبي", description: "policy.pdf — فتح ملف PDF من نفس مجلد الصفحة.", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/VIP%20instructions.jpg" },
-      { type: "file", title: "نموذج Excel", description: "assets-log.xlsx — فتح جدول العهد Excel من نفس المجلد.", href: "./assets-log.xlsx" },
-      { type: "file", title: "دليل الإجراءات", description: "procedures.docx — فتح مستند Word محلي.", href: "./procedures.docx" },
-      { type: "file", title: "تقرير شهري", description: "monthly-report.pdf — فتح ملف التقرير الشهري.", href: "./monthly-report.pdf" },
+      { type: "file", title: "سياسة الشركة", description: "policy.pdf — السياسة الداخلية المعتمدة.", href: "policy.pdf" },
+      { type: "file", title: "دليل المستخدم", description: "user-guide.pdf — خطوات الاستخدام التفصيلية.", href: "user-guide.pdf" },
+      { type: "file", title: "نموذج طلب إجازة", description: "leave-form.pdf — يُعبأ ويُرسل للموارد البشرية.", href: "leave-form.pdf" },
+      { type: "file", title: "قائمة الأسعار", description: "pricing.pdf — أحدث قائمة بأسعار الخدمات.", href: "pricing.pdf" },
     ],
-  },
-  {
-    id: "folders",
-    title: "المجلدات المحلية",
-    description: "انسخ مسار المجلد والصقه مباشرةً في File Explorer",
-    items: [
-  { 
-    type: "folder", 
-    title: "OPS CALL CENTER", 
-    description: "Call Center Main Folder", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center" 
-  },
-  { 
-    type: "folder", 
-    title: "Network", 
-    description: "NC Network Sheet", 
-    href: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Monthly Network" 
-  },
-  { 
-    type: "folder", 
-    title: "POOLS", 
-    description: "NC Active Pools", 
-    href: "W:\\Claims\\Claims-Data\\Pools" 
-  },
-  { 
-    type: "folder", 
-    title: "Chronic", 
-    description: "Chronic Shared Data", 
-    href: "W:\\Chronic\\Chronic-Data\\chronic shared" 
-  },
-  { 
-    type: "folder", 
-    title: "KPIs", 
-    description: "Daily Reports & KPIs", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\Reports\\Daily Reports\\KPIs" 
-  },
-  { 
-    type: "folder", 
-    title: "NC Schedule", 
-    description: "NextCare Schedule", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\NextCare sch" 
-  },
-  { 
-    type: "folder", 
-    title: "PGN", 
-    description: "Payer General Notes", 
-    href: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Policy Wording" 
-  }
-],
   },
 ];
 
@@ -451,28 +185,17 @@ const GROUPS = [
    STATE & RENDER
 ============================================================ */
 let activeGroupId = GROUPS[0].id;
-let activeFilterId = GROUPS[0].filters?.[0]?.id || "all";
 let query = "";
 
 const tabsEl = document.getElementById("tabs");
-const subtabsEl = document.getElementById("subtabs");
 const gridEl = document.getElementById("grid");
 const emptyEl = document.getElementById("empty");
 const groupTitleEl = document.getElementById("groupTitle");
 const groupDescEl = document.getElementById("groupDesc");
 const searchInput = document.getElementById("searchInput");
-const resultCountEl = document.getElementById("resultCount");
 
 function getActiveGroup() {
   return GROUPS.find(g => g.id === activeGroupId) || GROUPS[0];
-}
-
-function visibleItemsFor(group) {
-  const q = query.trim().toLowerCase();
-  return group.items.filter(item => {
-    const filterOk = !group.filters || activeFilterId === "all" || item.filter === activeFilterId;
-    return filterOk && matchesQuery(item, q);
-  });
 }
 
 function renderTabs() {
@@ -488,47 +211,16 @@ function renderTabs() {
         : "bg-white border-ink-300 text-ink-700 hover:border-brand-500 hover:text-ink-900"
     ].join(" ");
     btn.innerHTML = `
-      <span>${escapeHtml(g.title)}</span>
+      <span>${g.title}</span>
       <span class="rounded-full px-1.5 text-xs ${isActive ? 'bg-white/20 text-white' : 'bg-ink-100 text-ink-500'}">${g.items.length}</span>
     `;
     btn.addEventListener("click", () => {
       activeGroupId = g.id;
-      activeFilterId = g.filters?.[0]?.id || "all";
       query = "";
       searchInput.value = "";
       renderAll();
     });
     tabsEl.appendChild(btn);
-  });
-}
-
-function renderSubtabs() {
-  const group = getActiveGroup();
-  subtabsEl.innerHTML = "";
-  if (!group.filters) {
-    subtabsEl.classList.add("hidden");
-    subtabsEl.classList.remove("flex");
-    return;
-  }
-  subtabsEl.classList.remove("hidden");
-  subtabsEl.classList.add("flex");
-  group.filters.forEach(filter => {
-    const count = group.items.filter(item => item.filter === filter.id).length;
-    const isActive = activeFilterId === filter.id;
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = [
-      "inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold transition-all focus:outline-none focus:ring-2 focus:ring-brand-500/30",
-      isActive
-        ? "bg-ink-900 border-ink-900 text-white"
-        : "bg-white border-ink-100 text-ink-500 hover:border-brand-500 hover:text-ink-900"
-    ].join(" ");
-    btn.innerHTML = `<span>${escapeHtml(filter.title)}</span><span class="opacity-70">${count}</span>`;
-    btn.addEventListener("click", () => {
-      activeFilterId = filter.id;
-      renderAll();
-    });
-    subtabsEl.appendChild(btn);
   });
 }
 
@@ -539,22 +231,10 @@ function typeBadge(type) {
       بريد
     </span>`;
   }
-  if (type === "link") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-      رابط
-    </span>`;
-  }
   if (type === "file") {
     return `<span class="inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium px-2 py-0.5">
       <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
       ملف
-    </span>`;
-  }
-  if (type === "folder") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-warn-50 text-warn-500 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-      مجلد
     </span>`;
   }
   return `<span class="inline-flex items-center gap-1 rounded-full bg-success-50 text-success-600 text-xs font-medium px-2 py-0.5">
@@ -564,11 +244,9 @@ function typeBadge(type) {
 }
 
 function previewOf(item) {
-  if (item.type === "text")   return item.text || "";
-  if (item.type === "email")  return item.description || `mailto:${item.to}?cc=${item.cc || ''}&subject=${encodeURIComponent(item.subject)}&body=${encodeURIComponent(item.body)}إلى: ${item.to || "—"} • الموضوع: ${item.subject || "—"}mailto:${item.to}?cc=${item.cc || ''}&subject=${encodeURIComponent(item.subject)}&body=${encodeURIComponent(item.body)}`;
-  if (item.type === "link")   return item.description || item.href;
-  if (item.type === "file")   return item.description || item.href;
-  if (item.type === "folder") return item.description ? `${item.description}\n${item.path || ""}` : item.path;
+  if (item.type === "text")  return item.text || "";
+  if (item.type === "email") return item.description || `إلى: ${item.to || "—"} • الموضوع: ${item.subject || "—"}`;
+  if (item.type === "file")  return item.description || item.href;
   return "";
 }
 
@@ -582,7 +260,6 @@ function matchesQuery(item, q) {
     item.body || "",
     item.to || "",
     item.href || "",
-    item.path || "",
   ].join(" ").toLowerCase();
   return hay.includes(q);
 }
@@ -592,18 +269,17 @@ function renderGrid() {
   groupTitleEl.textContent = group.title;
   groupDescEl.textContent = group.description || "";
 
-  const items = visibleItemsFor(group);
-  resultCountEl.textContent = `${items.length} عنصر`;
-  gridEl.innerHTML = "";
+  const q = query.trim().toLowerCase();
+  const items = group.items.filter(it => matchesQuery(it, q));
 
+  gridEl.innerHTML = "";
   if (items.length === 0) {
     emptyEl.classList.remove("hidden");
     return;
   }
   emptyEl.classList.add("hidden");
 
-  items.forEach((item) => {
-    const detail = item.href || item.path || "";
+  items.forEach((item, idx) => {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "group relative flex h-full flex-col rounded-xl border border-ink-100 bg-white p-5 text-start shadow-card transition-all hover:-translate-y-0.5 hover:shadow-cardHover hover:border-brand-500/40 focus:outline-none focus:ring-2 focus:ring-brand-500/30";
@@ -613,7 +289,6 @@ function renderGrid() {
         ${typeBadge(item.type)}
       </div>
       <p class="line-clamp-3 whitespace-pre-line text-sm leading-relaxed text-ink-500">${escapeHtml(previewOf(item))}</p>
-      ${detail ? `<p class="mt-4 truncate rounded-lg bg-ink-50 px-2.5 py-2 text-xs font-medium text-ink-500" dir="ltr">${escapeHtml(detail)}</p>` : ""}
     `;
     card.addEventListener("click", () => handleAction(item, card));
     gridEl.appendChild(card);
@@ -622,7 +297,6 @@ function renderGrid() {
 
 function renderAll() {
   renderTabs();
-  renderSubtabs();
   renderGrid();
 }
 
@@ -636,11 +310,10 @@ async function handleAction(item, cardEl) {
       flashCard(cardEl, "success");
       toast({ title: "تم النسخ", desc: item.title, kind: "success" });
     } else {
-      toast({ title: "تعذّر النسخ", desc: "حاول مرة أخرى أو انسخ النص يدوياً", kind: "error" });
+      toast({ title: "تعذّر النسخ", desc: "حاول مرة أخرى", kind: "error" });
     }
     return;
   }
-
   if (item.type === "email") {
     const url = buildMailto(item);
     window.location.href = url;
@@ -648,47 +321,22 @@ async function handleAction(item, cardEl) {
     toast({ title: "جارٍ فتح البريد", desc: item.title, kind: "info" });
     return;
   }
-
-  if (item.type === "link") {
-    const win = window.open(item.href, "_blank", "noopener,noreferrer");
-    flashCard(cardEl, "info");
-    toast(win
-      ? { title: "تم فتح الرابط", desc: item.title, kind: "info" }
-      : { title: "تعذّر الفتح", desc: "تأكد من السماح بالنوافذ المنبثقة", kind: "error" }
-    );
-    return;
-  }
-
   if (item.type === "file") {
     const win = window.open(item.href, "_blank");
     flashCard(cardEl, "info");
-    toast(win
-      ? { title: "جارٍ فتح الملف", desc: item.title, kind: "info" }
-      : { title: "تعذّر الفتح", desc: "تأكد من وجود الملف بجانب index.html والسماح بالنوافذ المنبثقة", kind: "error" }
-    );
-    return;
-  }
-
-  if (item.type === "folder") {
-    const ok = await copyToClipboard(item.path || "");
-    if (ok) {
-      flashCard(cardEl, "success");
-      toast({ title: "تم نسخ مسار المجلد", desc: "الصقه في File Explorer", kind: "success" });
+    if (!win) {
+      toast({ title: "تعذّر الفتح", desc: "تأكد من السماح بالنوافذ المنبثقة", kind: "error" });
     } else {
-      toast({ title: "تعذّر نسخ المسار", desc: "انسخه يدوياً من البطاقة", kind: "error" });
+      toast({ title: "جارٍ فتح الملف", desc: item.title, kind: "info" });
     }
   }
 }
 
-function buildMailto({ to = "", cc = "", subject = "", body = "" }) {
+function buildMailto({ to = "", subject = "", body = "" }) {
   const params = [];
-
-  if (cc) params.push("cc=" + encodeURIComponent(cc));
   if (subject) params.push("subject=" + encodeURIComponent(subject));
-  if (body) params.push("body=" + encodeURIComponent(body));
-
-  return "mailto:" + encodeURIComponent(to).replace(/%40/g, "@") +
-    (params.length ? "?" + params.join("&") : "");
+  if (body)    params.push("body="    + encodeURIComponent(body));
+  return "mailto:" + encodeURIComponent(to).replace(/%40/g, "@") + (params.length ? "?" + params.join("&") : "");
 }
 
 async function copyToClipboard(text) {
@@ -709,7 +357,6 @@ async function copyToClipboard(text) {
     document.body.appendChild(ta);
     ta.focus();
     ta.select();
-    ta.setSelectionRange(0, ta.value.length);
     const ok = document.execCommand("copy");
     document.body.removeChild(ta);
     return ok;
