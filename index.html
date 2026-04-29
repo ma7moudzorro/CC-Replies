@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ramadouna's Dashboard</title>
-<meta name="description" content="لوحة احترافية لنسخ النصوص وفتح الروابط والملفات ونسخ مسارات المجلدات بنقرة واحدة." />
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,23 +14,10 @@
       extend: {
         fontFamily: { sans: ['Tajawal', 'system-ui', 'sans-serif'] },
         colors: {
-          brand: {
-            50:  '#eff6ff',
-            100: '#dbeafe',
-            500: '#3b82f6',
-            600: '#2563eb',
-            700: '#1d4ed8',
-          },
-          ink: {
-            900: '#0f172a',
-            700: '#334155',
-            500: '#64748b',
-            300: '#cbd5e1',
-            100: '#f1f5f9',
-            50:  '#f8fafc',
-          },
+          brand: { 50:  '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
+          ink: { 900: '#0f172a', 700: '#334155', 500: '#64748b', 300: '#cbd5e1', 100: '#f1f5f9', 50:  '#f8fafc' },
           success: { 500: '#10b981', 600: '#059669', 50: '#ecfdf5' },
-          warn:    { 500: '#f59e0b', 50: '#fffbeb' },
+          warn: { 500: '#f59e0b', 50: '#fffbeb' },
         },
         boxShadow: {
           card: '0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.06)',
@@ -42,42 +28,34 @@
   };
 </script>
 <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { font-family: 'Tajawal', system-ui, sans-serif; }
   body { background: #f8fafc; color: #0f172a; }
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .toast-enter { transform: translateY(10px); opacity: 0; }
-  .toast-show  { transform: translateY(0);    opacity: 1; transition: all .25s ease; }
+  .toast-show { transform: translateY(0); opacity: 1; transition: all .25s ease; }
   .toast-leave { transform: translateY(10px); opacity: 0; transition: all .25s ease; }
   .card-flash-success { box-shadow: 0 0 0 2px rgba(16,185,129,.35); border-color: #10b981 !important; background: #ecfdf5; }
-  .card-flash-info    { box-shadow: 0 0 0 2px rgba(37,99,235,.35);  border-color: #2563eb !important; background: #eff6ff; }
+  .card-flash-info { box-shadow: 0 0 0 2px rgba(37,99,235,.35); border-color: #2563eb !important; background: #eff6ff; }
 </style>
 </head>
 <body class="min-h-screen">
 
-<!-- HEADER -->
 <header class="bg-white/80 backdrop-blur border-b border-ink-100 sticky top-0 z-30">
   <div class="max-w-7xl mx-auto px-5 py-5">
     <div class="flex items-start gap-3 mb-5">
       <div class="h-11 w-11 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16L12 2z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16L12 2z"/></svg>
       </div>
       <div>
         <h1 class="text-2xl font-extrabold tracking-tight text-ink-900">Ramadouna's Dashboard</h1>
         <p class="text-sm text-ink-500 mt-0.5">المراجعة النهائية في الموافقات الطبية</p>
       </div>
     </div>
-
-    <!-- TABS -->
     <nav id="tabs" class="flex flex-wrap gap-2"></nav>
   </div>
 </header>
 
-<!-- MAIN -->
 <main class="max-w-7xl mx-auto px-5 py-8">
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
     <div>
@@ -85,13 +63,13 @@
       <p id="groupDesc" class="text-sm text-ink-500 mt-0.5"></p>
     </div>
     <div class="relative w-full sm:w-72">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-ink-500 absolute top-1/2 -translate-y-1/2 end-3.5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-ink-500 absolute top-1/2 -translate-y-1/2 end-3.5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="searchInput" type="text" placeholder="ابحث ضمن هذه المجموعة..." class="w-full h-11 rounded-lg border border-ink-300 bg-white pe-10 ps-3 text-sm shadow-card focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
     </div>
   </div>
 
   <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
-    <nav id="subtabs" class="hidden flex-wrap gap-2"></nav>
+    <nav id="subtabs" class="flex flex-wrap gap-2"></nav>
     <div id="resultCount" class="text-xs font-bold text-ink-500"></div>
   </div>
 
@@ -99,19 +77,23 @@
   <div id="empty" class="hidden rounded-xl border border-dashed border-ink-300 bg-white/40 py-16 text-center text-sm text-ink-500">لا توجد نتائج</div>
 </main>
 
-<!-- TOAST CONTAINER -->
 <div id="toasts" class="fixed bottom-5 start-5 z-50 flex flex-col gap-2"></div>
 
+<div id="noteModal" class="fixed inset-0 z-50 hidden bg-black/40 flex items-center justify-center">
+  <div class="relative w-full max-w-2xl mx-5 bg-white rounded-2xl shadow-2xl">
+    <div class="flex items-center justify-between p-6 border-b border-ink-100">
+      <h2 id="noteTitle" class="text-xl font-bold text-ink-900"></h2>
+      <button id="closeNoteBtn" type="button" class="text-ink-500 hover:text-ink-900 hover:bg-ink-100 transition-all p-2 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6l-12 12M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-6 max-h-96 overflow-y-auto">
+      <p id="noteContent" class="whitespace-pre-line leading-relaxed text-ink-700 text-sm"></p>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ============================================================
-   DATA — أضف أو عدّل المحتوى هنا
-   أنواع البطاقات:
-     - "text"   : ينسخ النص إلى الحافظة
-     - "email"  : يفتح برنامج البريد (mailto)
-     - "link"   : يفتح رابط ويب في تبويب جديد
-     - "file"   : يفتح ملفًا محليًا/نسبيًا في تبويب جديد
-     - "folder" : ينسخ مسار مجلد محلي أو مسار شبكة
-============================================================ */
 const GROUPS = [
   {
     id: "tatsh",
@@ -125,25 +107,23 @@ const GROUPS = [
     items: [
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "بدون كارنيه مع الاطلاع على أصل تحقيق الشخصية أو الكارنيه المنتهي" },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع الرجوع الى نيكست كير في حالة تخطي الخدمات ...... جنيه" },
-	        { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "السلام عليكم ورحمة الله وبركاته،\nنشكركم على تواصلكم معنا." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "لا مانع من عمل نظارة طبية بعدسات طبية مع تحمل ****من قيمه النظاره على ان يكون اقصى تحمل لنيكست كير **** جنيه بعد تحمل العميل (بعد تطبيق نسبة خصم التعاقد على الثمن الاصلى للنظاره) مع ارفاق اصل قياسات النظر حتي يتم اعتماد المطالبة" },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع ضرورة ارفاق اشعة الاكس راى مع الفاتورة لاعتماد المطالبة " },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "العميل مميز برجاء تقديم الخدمة مباشرة بعد الاطلاع علي الكارنية و تاريخ الصلاحية" },	  
+      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع ضرورة ارفاق اشعة الاكس راى مع الفاتورة لاعتماد المطالبة" },
+      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "العميل مميز برجاء تقديم الخدمة مباشرة بعد الاطلاع علي الكارنية و تاريخ الصلاحية" },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال تقرير الأشعة في حالة طلب موافقات اخري متعلقة بالتشخيص ." },
-	  { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال نتائج التحاليل في حالة طلب موافقات اخري متعلقة بالتشخيص ." },
-      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " - برجاء ارسال تقرير السونار أو تحليل الحمل الرقمى في حالة طلب موافقات اخري متعلقة بمتابعة الحمل . " },
+      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال نتائج التحاليل في حالة طلب موافقات اخري متعلقة بالتشخيص ." },
+      { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء ارسال تقرير السونار أو تحليل الحمل الرقمى في حالة طلب موافقات اخري متعلقة بمتابعة الحمل ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع تحمل العميل***  على قيمه الخدمات و الرجوع لنيكست كير اذا تعدت تكلفه الخدمات ***جنيه بعد تحمل العميل ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع تحمل العميل *** على قيمه الخدمات على ان يكون اقصى تحمل  لنيكست كير **** جنية بعد تحمل العميل ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "مع الرجوع لنكست كير فى حالة تخطى القيمة *** جنية ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "بحد أقصي ** جنية ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " يرجي الصرف حسب الجرعه والمده المحدده في حالة سريان الكارت التأميني او صرف جرعه كافيه حتي انتهاء الكارت التأميني في حاله قرب انتهائه" },
-      { type: "text", filter: "approved", title: "رد اعتماد نهائي", text: "يتم ا5موافقة علي البديل بشرط أن يكون نفس المادة الفعالة , نفس الشكل الدوائي , نفس التركيز وفرق السعر لا يزيد عن 10 جنية .  " },
+      { type: "text", filter: "approved", title: "رد اعتماد نهائي", text: "يتم الموافقة علي البديل بشرط أن يكون نفس المادة الفعالة , نفس الشكل الدوائي , نفس التركيز وفرق السعر لا يزيد عن 10 جنية .  " },
       { type: "text", filter: "approved", title: "رد قبول مشروط", text: "تمت الموافقة المبدئية على الطلب، على أن يتم استكمال المتطلبات المتبقية قبل التنفيذ." },
       { type: "text", filter: "approved", title: "رد إغلاق بعد الموافقة", text: "العميل مميز برجاء تقديم الخدمة مباشرة بعد الاطلاع علي الكارنية و تاريخ الصلاحية ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "الخدمات المطلوبه لا تحتاج موافقه مسبقه علي الا تتعدي الموافقه 1000 جم عدا الاشعه المقطعيه والرنين بدون صبغه يتم عملها بدون موافقه مسبقه ولا يخضعوا لسعر محدد .." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: "برجاء الرجوع لخطاب تعليمات الخاص بنيكست كير وتقديم الخدمه للعميل دون تاخير ." },
       { type: "text", filter: "approved", title: "رد موافقة مختصر", text: " موافقة طبية و سعرية بقيمة *** جنية ." },
-	  
 
       { type: "text", filter: "rejected", title: "رد رفض لعدم اكتمال البيانات", text: "برجاء الرجوع الي قسم الموارد البشرية الخاص بكم ." },
       { type: "text", filter: "rejected", title: "رد رفض حسب السياسة", text: "عفواً .. الاجراء المطلوب غير مغطي تأمينياً " },
@@ -151,227 +131,47 @@ const GROUPS = [
       { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الحد الاقصي للتغطية التأمينية للعميل." },
       { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الوعاء التأميني المتاح للأمراض المزمنة" },
 
-
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال تقرير الأشعة الداعم / الموضح للتشخيص . " },
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج التحاليل الداعمة / الموضحة للتشخيص ( مع ذكر التحليل المطلوب في حالة طلب تحليل محدد ) . " },
-      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج الفحوصات الداعمة / الموضحة للتشخيص ." },	  
+      { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج الفحوصات الداعمة / الموضحة للتشخيص ." },
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال تقرير السونار أو تحليل الحمل الرقمي ." },
       { type: "text", filter: "pending", title: "رد انتظار اعتماد", text: "يرجي ارسال الطلب عن طريق الشخص المختص." },
       { type: "text", filter: "pending", title: "رد احتياج معلومات", text: "الحالة قيد المراجعة و سيتم الرد في أقرب وقت ممكن ." },
       { type: "text", filter: "pending", title: "رد متابعة داخلية", text: "برجاء ايضاح هل التحاليل ما قبل العمليه؟ برجاء ارسال طلب العملية مع التحاليل مع تحديد مقدم خدمة و فرع للعملية و تحاليل ما قبل العملية يتم الموافقة عليها بعد الموافقة علي العملية ." },
-	  
     ],
   },
-  
-   {
+  {
     id: "emails",
     title: "Emails",
     description: "قوالب بريدية تفتح في برنامج البريد مباشرةً",
     items: [
-  { 
-    type: "email", 
-    title: "External E-mails to the Customers", 
-    description: "Send email to customers", 
-    to: "", 
-    cc: "PrecertRep.EG@nextcarehealth.com", 
-    subject: "", 
-    body: "Dear valued client\nGreeting from Nextcare\nKindly find the attached file\nPlease don't reply back to this E-mail, for further requests or inquiries kindly send to the official E-mail mentioned on the medical card" 
+      { type: "email", title: "External E-mails to the Customers", description: "Send email to customers", to: "", cc: "PrecertRep.EG@nextcarehealth.com", subject: "", body: "Dear valued client\nGreeting from Nextcare\nKindly find the attached file\nPlease don't reply back to this E-mail, for further requests or inquiries kindly send to the official E-mail mentioned on the medical card" },
+      { type: "email", title: "Cancellation of Authorized Claims", description: "Request cancellation of approval", to: "NC-EGY ProviderCare-Support@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "IP / OP Cancellation - Card no.", body: "Dear Team\nKindly confirm that the attached approval has not been used as per the client request\nProvider:\nBranch:\nApproval no.:\nCard no.:\nCustomer Mobile no.:\nReason of cancellation: to change provider to … or didn't use it.\nN.B: In case the approval was partially used, please mention the cost of the used services." },
+      { type: "email", title: "Correction of Processed or Settled Claim", description: "Request correction of claim", to: "Amira.Mourad@nextcarehealth.com; Bishoy.khairy@nextcarehealth.com; Enas.Abdelnasser@nextcarehealth.com; Olivia.Arnest@nextcarehealth.com; Emad.Gamil@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com; Marwa.Azeem@nextcarehealth.com; Mostafa.Khedr@nextcarehealth.com", subject: "Cancellation – Approval no.", body: "Dear Team,\nPlease note the below Approval is (Processed / Settled) while we got confirmation that it is not used as per the attached.\nCard Number:\nApproval Number:" },
+      { type: "email", title: "Asoap Forms", description: "Request Asoap Forms for provider", to: "NC-EGY-ASOAPSrequest@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Asoap forms", body: "Dear Team,\nKindly provide the below provider with Asoap Forms.\n[Provider details inserted here]" },
+      { type: "email", title: "Phone no. for Case Management", description: "Send member phone for CM", to: "NC-EGY-Case_management@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Phone no. for Case Management", body: "Dear Team,\nKindly find the Member's phone no. below for the Case Management requested.\nPhone no.:\nCard no.:\nApproval no.:" },
+      { type: "email", title: "Chronic Requests – Missed Item", description: "Route to Chronic - Missed item", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly advise the below member has missed items on his chronic medications on (Month).\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" },
+      { type: "email", title: "Chronic Requests – Cancelled Item", description: "Route to Chronic - Cancelled item", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly advise about the below cancelled items from the member's PK.\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" },
+      { type: "email", title: "Chronic Request – Unsent Medication", description: "Route to Chronic - Unsent to Yodawy", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly advise about the below member's PK as the member clarified that Yodawy has no medication for him even though it exists in his PK.\nCard no.:\nPK:\nProvider:\nBranch:" },
+      { type: "email", title: "Chronic Requests – Altered Item", description: "Route to Chronic - Altered item", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly note that the member's prescription contains (…) while we approved (…).\nCard no.:\nPK:\nProvider:\nBranch:" },
+      { type: "email", title: "Chronic Requests – No PK on System", description: "Route to Chronic - No PK", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly advise about the below member's PK as it was not refilled for (Month).\nCard no.:\nProvider:\nBranch:" },
+      { type: "email", title: "Chronic Requests – Pending Provider/Branch", description: "Route to Chronic - Change provider", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Chronic Request – Card no.", body: "Route to Chronic\nDear Team,\nKindly note that the member requests his approval to be directed to (Provider & Branch).\nCard no.:\nClaim Ref.:" },
+      { type: "email", title: "Deactivated Provider", description: "Deactivated on TATSH", to: "NTW.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Deactivated Provider", body: "Dear Team,\nKindly advise about the below case where the provider exists on network sheet while it is deactivated on TATSH.\nCard no.:" },
+      { type: "email", title: "Dismissing Provider", description: "Provider doesn't deal with Nextcare", to: "CustomerCare.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Dismissing provider + Provider TATSH Name", body: "Dear Team,\nKindly note that we received a call from a client notifying that the mentioned provider does not deal with Nextcare even though it is mentioned in the client's network sheet.\nCard no.:\nTime of incident:\nCustomer Phone no.:\nMember's Email:" },
+      { type: "email", title: "Provider Not in Network Sheet", description: "Contracted but not in sheet", to: "NTW.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Provider is not existed in Network sheet", body: "Dear Team,\nKindly advise if (Provider) is contracted with Nextcare as it is not found in network sheet while the provider confirmed they are active.\nProvider:\nCard no.:" },
+      { type: "email", title: "Internal Request – Route IP/OP", description: "Route IP or OP request", to: "InternalReq.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Route IP / OP", body: "Dear Team,\nRoute IP / OP\nCard no.:\nThe member needs:\nSender mail:" },
+      { type: "email", title: "New Contract – New Company", description: "New company sales lead", to: "Karim.Hamed@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "New Contract – New Company", body: "Dear Team,\nKindly note that we received a call from (Name) who wants to contract with Nextcare for the staff.\nPhone no.:\nNumber of employees:\nCompany Name:" },
+      { type: "email", title: "Lost Card", description: "Lost wallet/card found", to: "NC-EGY-CR@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Lost Card", body: "Dear Team,\nKindly note that we received a call from (Mr. Name) who found the wallet of our insured member (Card no. …) and wants to return it.\nCaller's Phone no.:\nPayer:\nPolicy:" },
+      { type: "email", title: "TATSH User Locked", description: "Unlock TATSH user", to: "Informationsecurity@nextcarehealth.com", cc: "NC-EGP_CC-LS@nextcarehealth.com", subject: "TATSH User locked", body: "Dear Team,\nKindly support to unlock the below User.\nTATSH User:\nIssue type: User Locked\nBusiness Unit: Egypt\nSystem: TATSH" },
+      { type: "email", title: "Duplicated Card", description: "Check duplicated card on TATSH", to: "PRD.EG@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Duplicated Card – Card no.", body: "Dear Team,\nKindly check the below and the attachment as the card is duplicated on TATSH.\nCard Number:" },
+      { type: "email", title: "Sending Phone no. to SMO Team", description: "Contact member for SMO", to: "Kareem.Othman@nextcarehealth.com; NC-EGY-SMO@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "SMO – Card no.", body: "Dear Team,\nKindly support to contact the member's phone no. mentioned below.\nPhone no.:\nCard no.:\nApproval no.:" },
+      { type: "email", title: "Lumi Delivery – Card no.", description: "Yodawy escalation", to: "h.ahmed@yodawy.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com", subject: "Lumi Delivery – Card no.", body: "Dear Yodawy Team,\nKindly support to check the member as he contacted Yodawy via \"Get Help\" but his issue was not resolved and still needs support.\nPhone no.:\nCard no.:" },
+      { type: "email", title: "Egypt Air RI Call Back", description: "Follow up Egypt Air declined requests", to: "NC-EGY_Remb-Leaders@nextcarehealth.com; Nada.Reda@nextcarehealth.com", cc: "NC-EGP-CallCenterAll@nextcarehealth.com; NC-EGP_CC-LS@nextcarehealth.com; Sandra.Hany@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com; Karim.Hamed@nextcarehealth.com", subject: "Follow up request ( Egypt Air ) - Card no.", body: "Dears,\nKindly contact the client regarding her declined requests ASAP.\nCard no. \nPhone no. \nClain no. " },
+    ],
   },
-  { 
-    type: "email", 
-    title: "Cancellation of Authorized Claims", 
-    description: "Request cancellation of approval", 
-    to: "NC-EGY ProviderCare-Support@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "IP / OP Cancellation - Card no.", 
-    body: "Dear Team\nKindly confirm that the attached approval has not been used as per the client request\nProvider:\nBranch:\nApproval no.:\nCard no.:\nCustomer Mobile no.:\nReason of cancellation: to change provider to … or didn’t use it.\nN.B: In case the approval was partially used, please mention the cost of the used services." 
-  },
-  { 
-    type: "email", 
-    title: "Correction of Processed or Settled Claim", 
-    description: "Request correction of claim", 
-    to: "Amira.Mourad@nextcarehealth.com; Bishoy.khairy@nextcarehealth.com; Enas.Abdelnasser@nextcarehealth.com; Olivia.Arnest@nextcarehealth.com; Emad.Gamil@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com; Marwa.Azeem@nextcarehealth.com; Mostafa.Khedr@nextcarehealth.com", 
-    subject: "Cancellation – Approval no.", 
-    body: "Dear Team,\nPlease note the below Approval is (Processed / Settled) while we got confirmation that it is not used as per the attached.\nCard Number:\nApproval Number:" 
-  },
-  { 
-    type: "email", 
-    title: "Asoap Forms", 
-    description: "Request Asoap Forms for provider", 
-    to: "NC-EGY-ASOAPSrequest@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Asoap forms", 
-    body: "Dear Team,\nKindly provide the below provider with Asoap Forms.\n[Provider details inserted here]" 
-  },
-  { 
-    type: "email", 
-    title: "Phone no. for Case Management", 
-    description: "Send member phone for CM", 
-    to: "NC-EGY-Case_management@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Phone no. for Case Management", 
-    body: "Dear Team,\nKindly find the Member’s phone no. below for the Case Management requested.\nPhone no.:\nCard no.:\nApproval no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Missed Item", 
-    description: "Route to Chronic - Missed item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise the below member has missed items on his chronic medications on (Month).\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Cancelled Item", 
-    description: "Route to Chronic - Cancelled item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below cancelled items from the member’s PK.\nMedication:\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Request – Unsent Medication", 
-    description: "Route to Chronic - Unsent to Yodawy", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below member’s PK as the member clarified that Yodawy has no medication for him even though it exists in his PK.\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Altered Item", 
-    description: "Route to Chronic - Altered item", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly note that the member’s prescription contains (…) while we approved (…).\nCard no.:\nPK:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – No PK on System", 
-    description: "Route to Chronic - No PK", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly advise about the below member’s PK as it was not refilled for (Month).\nCard no.:\nProvider:\nBranch:" 
-  },
-  { 
-    type: "email", 
-    title: "Chronic Requests – Pending Provider/Branch", 
-    description: "Route to Chronic - Change provider", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Chronic Request – Card no.", 
-    body: "Route to Chronic\nDear Team,\nKindly note that the member requests his approval to be directed to (Provider & Branch).\nCard no.:\nClaim Ref.:" 
-  },
-  { 
-    type: "email", 
-    title: "Deactivated Provider", 
-    description: "Deactivated on TATSH", 
-    to: "NTW.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Deactivated Provider", 
-    body: "Dear Team,\nKindly advise about the below case where the provider exists on network sheet while it is deactivated on TATSH.\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Dismissing Provider", 
-    description: "Provider doesn't deal with Nextcare", 
-    to: "CustomerCare.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Dismissing provider + Provider TATSH Name", 
-    body: "Dear Team,\nKindly note that we received a call from a client notifying that the mentioned provider does not deal with Nextcare even though it is mentioned in the client’s network sheet.\nCard no.:\nTime of incident:\nCustomer Phone no.:\nMember’s Email:" 
-  },
-  { 
-    type: "email", 
-    title: "Provider Not in Network Sheet", 
-    description: "Contracted but not in sheet", 
-    to: "NTW.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Provider is not existed in Network sheet", 
-    body: "Dear Team,\nKindly advise if (Provider) is contracted with Nextcare as it is not found in network sheet while the provider confirmed they are active.\nProvider:\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Internal Request – Route IP/OP", 
-    description: "Route IP or OP request", 
-    to: "InternalReq.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Route IP / OP", 
-    body: "Dear Team,\nRoute IP / OP\nCard no.:\nThe member needs:\nSender mail:" 
-  },
-  { 
-    type: "email", 
-    title: "New Contract – New Company", 
-    description: "New company sales lead", 
-    to: "Karim.Hamed@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "New Contract – New Company", 
-    body: "Dear Team,\nKindly note that we received a call from (Name) who wants to contract with Nextcare for the staff.\nPhone no.:\nNumber of employees:\nCompany Name:" 
-  },
-  { 
-    type: "email", 
-    title: "Lost Card", 
-    description: "Lost wallet/card found", 
-    to: "NC-EGY-CR@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Lost Card", 
-    body: "Dear Team,\nKindly note that we received a call from (Mr. Name) who found the wallet of our insured member (Card no. …) and wants to return it.\nCaller’s Phone no.:\nPayer:\nPolicy:" 
-  },
-  { 
-    type: "email", 
-    title: "TATSH User Locked", 
-    description: "Unlock TATSH user", 
-    to: "Informationsecurity@nextcarehealth.com", 
-    cc: "NC-EGP_CC-LS@nextcarehealth.com", 
-    subject: "TATSH User locked", 
-    body: "Dear Team,\nKindly support to unlock the below User.\nTATSH User:\nIssue type: User Locked\nBusiness Unit: Egypt\nSystem: TATSH" 
-  },
-  { 
-    type: "email", 
-    title: "Duplicated Card", 
-    description: "Check duplicated card on TATSH", 
-    to: "PRD.EG@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Duplicated Card – Card no.", 
-    body: "Dear Team,\nKindly check the below and the attachment as the card is duplicated on TATSH.\nCard Number:" 
-  },
-  { 
-    type: "email", 
-    title: "Sending Phone no. to SMO Team", 
-    description: "Contact member for SMO", 
-    to: "Kareem.Othman@nextcarehealth.com; NC-EGY-SMO@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "SMO – Card no.", 
-    body: "Dear Team,\nKindly support to contact the member’s phone no. mentioned below.\nPhone no.:\nCard no.:\nApproval no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Lumi Delivery – Card no.", 
-    description: "Yodawy escalation", 
-    to: "h.ahmed@yodawy.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com", 
-    subject: "Lumi Delivery – Card no.", 
-    body: "Dear Yodawy Team,\nKindly support to check the member as he contacted Yodawy via “Get Help” but his issue was not resolved and still needs support.\nPhone no.:\nCard no.:" 
-  },
-  { 
-    type: "email", 
-    title: "Egypt Air RI Call Back", 
-    description: "Follow up Egypt Air declined requests", 
-    to: "NC-EGY_Remb-Leaders@nextcarehealth.com; Nada.Reda@nextcarehealth.com", 
-    cc: "NC-EGP-CallCenterAll@nextcarehealth.com; NC-EGP_CC-LS@nextcarehealth.com; Sandra.Hany@nextcarehealth.com; Shimaa.Mohamed@nextcarehealth.com; Karim.Hamed@nextcarehealth.com", 
-    subject: "Follow up request ( Egypt Air ) - Card no.", 
-    body: "Dears,\nKindly contact the client regarding her declined requests ASAP.\nCard no. \nPhone no. \nClain no. " 
-  }
-],
-  },
-  
   {
     id: "links",
-    title: "روابط المواقع",
+    title: "Links",
     description: "روابط عمل سريعة تُفتح في تبويب جديد",
     items: [
       { type: "link", title: "TATSH", description: "Tatsh", href: "https://backoffice-egp.nextcarehealth.com/#/" },
@@ -380,15 +180,14 @@ const GROUPS = [
       { type: "link", title: "Precert Replies", description: "Precert Replies Outlook", href: "https://mailegy.nextcarehealth.com/owa/auth/logon.aspx?replaceCurrent=1&url=https%3a%2f%2fmailegy.nextcarehealth.com%2fowa%2f" },
       { type: "link", title: "IRIS", description: "Iris", href: "https://iris-egp.nextcarehealth.com/layout/new-claim" },
       { type: "link", title: "Veerloop", description: "Provider Bot", href: "https://nextcareprovider.mena.verloop.io/v2/live-chats/0/116847?activeRoomStatus=1" },
-      { type: "link", title: "Success Factor", description: "Success Factor", href: "https://performancemanager5.successfactors.eu/sf/start?_s.crb=RGhL9CBMMxjWUPJS9JwplmD2J5IEJXwkuiHlFHtWTYU%253d" },	  
+      { type: "link", title: "Success Factor", description: "Success Factor", href: "https://performancemanager5.successfactors.eu/sf/start?_s.crb=RGhL9CBMMxjWUPJS9JwplmD2J5IEJXwkuiHlFHtWTYU%253d" },
       { type: "link", title: "HR Works", description: "HR Works", href: "https://hr-ess.nextcarehealth.com/Home/Index" },
     ],
   },
-    
   {
     id: "files",
-    title: "الملفات والعهود",
-    description: "ملفات محلية تُفتح من نفس مجلد index.html أو من مسارات نسبية",
+    title: "Important Files",
+    description: "ملفات محلية تفتح في المتصفح بمجرد الضغط عليها",
     items: [
       { type: "file", title: "ملف PDF تجريبي", description: "policy.pdf — فتح ملف PDF من نفس مجلد الصفحة.", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/VIP%20instructions.jpg" },
       { type: "file", title: "نموذج Excel", description: "assets-log.xlsx — فتح جدول العهد Excel من نفس المجلد.", href: "./assets-log.xlsx" },
@@ -398,60 +197,371 @@ const GROUPS = [
   },
   {
     id: "folders",
-    title: "المجلدات المحلية",
+    title: "Folders",
     description: "انسخ مسار المجلد والصقه مباشرةً في File Explorer",
     items: [
+      { type: "folder", title: "OPS CALL CENTER", description: "Call Center Main Folder", path: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center" },
+      { type: "folder", title: "Network", description: "NC Network Sheet", path: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Monthly Network" },
+      { type: "folder", title: "POOLS", description: "NC Active Pools", path: "W:\\Claims\\Claims-Data\\Pools" },
+      { type: "folder", title: "Chronic", description: "Chronic Shared Data", path: "W:\\Chronic\\Chronic-Data\\chronic shared" },
+      { type: "folder", title: "KPIs", description: "Daily Reports & KPIs", path: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\Reports\\Daily Reports\\KPIs" },
+      { type: "folder", title: "NC Schedule", description: "NextCare Schedule", path: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\NextCare sch" },
+      { type: "folder", title: "PGN", description: "Payer General Notes", path: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Policy Wording" },
+    ],
+  },
+  {
+    id: "notes",
+    title: "Medical Notes",
+    description: "ملاحظات مهمة وملخصات سريعة",
+    items: [
   { 
-    type: "folder", 
-    title: "OPS CALL CENTER", 
-    description: "Call Center Main Folder", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center" 
+    type: "note", 
+    title: "عقد Future University - حدود الـ PK", 
+    text: "عقد Future University ليميت الـ PK فيه لـ Class B هو 2000 ج و Class C هو 1200 ج. الصرف يتم كل 30 يوماً؛ لذا إذا حاول العميل الصرف قبل مرور 30 يوماً سيظهر له نسبة تحمل عالية. يمكن عمل Void للصيدلية وتوجيه العميل للصرف بعد مرور الـ 30 يوماً بدلاً من طلب Override." 
   },
   { 
-    type: "folder", 
-    title: "Network", 
-    description: "NC Network Sheet", 
-    href: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Monthly Network" 
+    type: "note", 
+    title: "سياسة Orange - متابعة الحمل", 
+    text: "في بوليصة Orange: الأدوية والفحوصات الخاصة بالأمومة (Maternity) تُغطى من ليميت الـ AML (Physical illness). أما زيارات المتابعة والسونار تُغطى من ليميت الـ 3000 جنيه الخاص بالأمومة." 
   },
   { 
-    type: "folder", 
-    title: "POOLS", 
-    description: "NC Active Pools", 
-    href: "W:\\Claims\\Claims-Data\\Pools" 
+    type: "note", 
+    title: "سياسة Royal - إلغاء الموافقات", 
+    text: "لجميع بوالص Royal: في حالة إلغاء الموافقة أو تغيير مقدم الخدمة، لا تطلب من العميل ختم الإلغاء من مقدم الخدمة. يطبق هذا على خدمات العيادات الخارجية (OP) بدون حد مالي. في حالات الـ IP يتم التواصل مع مقدم الخدمة للتأكد من الاستخدام." 
   },
   { 
-    type: "folder", 
-    title: "Chronic", 
-    description: "Chronic Shared Data", 
-    href: "W:\\Chronic\\Chronic-Data\\chronic shared" 
+    type: "note", 
+    title: "سياسة Indevco (Orient) - طلبات المزمن", 
+    text: "لعقد Indevco تحت Orient: جميع طلبات الأدوية أو العلاج المزمن يجب أن ترسل من خلال جهات الاتصال المعتمدة (Authorized contacts). لا تُقبل الطلبات المباشرة من الأعضاء. يطبق هذا على نظام الـ PK فقط وليس الـ Scattered Chronic." 
   },
   { 
-    type: "folder", 
-    title: "KPIs", 
-    description: "Daily Reports & KPIs", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\Reports\\Daily Reports\\KPIs" 
+    type: "note", 
+    title: "سياسة NTRA (Misr Insurance)", 
+    text: "لعقد NTRA تحت مصر للتأمين: تُعتمد الفيتامينات (Multivitamins) في حالة إرسال الطلب عبر الـ HR وتُغطى من الـ Exclusion pool. تنظيف الأسنان (Polishing) مغطى من مزايا الأسنان. تحليل HOMA-IR مغطى بحد أقصى سنوي." 
   },
   { 
-    type: "folder", 
-    title: "NC Schedule", 
-    description: "NextCare Schedule", 
-    href: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\NextCare sch" 
+    type: "note", 
+    title: "عقد Allianz Individual - كشف النظر", 
+    text: "عقود Allianz Individual عادة ما تكون خدمات الأسنان والنظر بنظام الاسترداد (Reimbursement)، ولكن يمكن إصدار موافقة كشف النظر (ESE) من طرفنا مباشرة بناءً على ملاحظات الـ PGN." 
   },
   { 
-    type: "folder", 
-    title: "PGN", 
-    description: "Payer General Notes", 
-    href: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Policy Wording" 
+    type: "note", 
+    title: "سياسة Arab Bank (Allianz) - الحمل", 
+    text: "لعقد Arab Bank: فحوصات وأشعة وأدوية الـ ANC تُغطى من الـ AML (Physical illness). زيارات متابعة الحمل والسونار تُغطى مرة واحدة شهرياً بحد أقصى 250 جنيهاً." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Sukari Gold Mines (Orient) - المستلزمات", 
+    text: "جميع الغرسات الطبية (Medical Implants) مثل الشرائح والمسامير والدعامات وغيرها مغطاة لعقد Sukari Gold Mines تحت Orient." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Indevco (Orient) - ليميت الأدوية", 
+    text: "لعقد Indevco: يوجد ليميت أدوية 15 ألف جنيه لكل عضو (باستثناء أدوية الأسنان والأمومة والـ PK). أي تجاوز لهذا الحد يحتاج موافقة من Antoine Ghanem. الملحوظة موجودة في الـ Contract note فقط وليس الـ TOB." 
+  },
+  { 
+    type: "note", 
+    title: "خدمات الأسنان - Onlay & Inlay", 
+    text: "إجراءات الـ Onlay و Inlay لا تعتبر حشوات عادية بل تندرج تحت خدمات التعويضات (Prosthesis). يجب التأكد من غطاء الـ Prosthesis في البوليصة قبل القرار، إلا إذا ذكر غير ذلك في الـ PGN." 
+  },
+  { 
+    type: "note", 
+    title: "عقد BUE (Orient) - العلاج الطبيعي", 
+    text: "الموافقة على جلسات العلاج الطبيعي في مستشفيات منطقة الشروق استثنائياً عند الحاجة لعقد BUE تحت شركة أورينت." 
+  },
+  { 
+    type: "note", 
+    title: "جرعات بخاخات الأنف (Nasal Spray)", 
+    text: "الجرعة المعتمدة لبخاخات الأنف هي عبوة واحدة لكل 10 أيام في الحالات المتوسطة، وتزاد الكمية في حالات ما بعد العمليات الجراحية." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Tokio Marine - قطرات العين", 
+    text: "جميع أنواع قطرات Systane مستثناة لعقد Tokio Marine باستثناء بوالص Nissan و IBS Al Thuraya. يتم استبدالها بـ Poly Fresh في الـ PK." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Al-Wataniya - الفيتامينات والمناعة", 
+    text: "الفيتامينات للضرورة الطبية مغطاة، باستثناء فيتامين D (دواء) يغطى في حالات الحمل فقط. تحليل فيتامين D مستثنى تماماً. الأمراض المناعية (Autoimmune) غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "قيود تحليل فيتامين D للجهات المختلفة", 
+    text: "1. Allianz/Royal: يغطى في حالات أمراض الكلى/الكبد، لين العظام، الهشاشة، الكساح (تحت 4 سنوات)، سوء الامتصاص، واضطراب الغدة الدرقية.\n2. Delta: نفس حالات Allianz بالإضافة إلى الكسور ونقص الفيتامين؛ ويرفض في حالات الإجهاد/الألم.\n3. Iskan: يغطى لحالات التهاب المفاصل فقط.\n4. Mohandes: يغطى لاضطرابات الغدة أو إذا وصفه طبيب عظام/أعصاب.\n5. Platinum/Mada: غير مغطى تماماً." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة TMG (Misr Insurance) - المستشفيات المستثناة", 
+    text: "لعقد TMG تحت مصر للتأمين: المستشفيات التالية مستثناة من البوليصة بالكامل: الجنزوري، أندلسية، تاون، النزهة الدولي، والكويتي ببنها." 
+  },
+  { 
+    type: "note", 
+    title: "تحديث Allianz - الفيتامينات المتعددة", 
+    text: "يتم قبول الفيتامينات المتعددة (Multivitamins) في حالات تؤثر على الامتصاص مثل: أمراض كروان والقولون، أمراض الكبد والبنكرياس والمرارة، الأمراض المناعية، وحالات العلاج الإشعاعي أو الكيماوي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة إزالة الثآليل (Wart Removal)", 
+    text: "1. Delta: تعليق الطلب (Pend) للاستفسار عن السبب التجميلي.\n2. Misr Insurance: ثآليل الوجه والأعضاء التناسلية غير مغطاة.\n3. Allianz: تعليق ثآليل الوجه للاستفسار عن السبب التجميلي.\n4. Royal: ثآليل القدم فقط مغطاة.\n5. Egyptian Takaful: ثآليل الأعضاء التناسلية غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "تحديث Allianz - التحاليل الجينية", 
+    text: "التحاليل الجينية (Genetic testing) غير مغطاة إلا في حالات السرطان فقط." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Misr Insurance - التصلب المتعدد (MS)", 
+    text: "مرض التصلب المتعدد (Multiple sclerosis) يكون مغطى في حالة تغطية الأمراض المناعية في العقد." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة NTRA (Misr Insurance) - حمل", 
+    text: "جلسات الحديد للأمومة ومضاعفاتها مغطاة حتى الحد الأقصى السنوي لعقد NTRA تحت مصر للتأمين." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Tokio Marine - الأمراض المناعية", 
+    text: "الأمراض المناعية مغطاة لجميع البوالص بدءاً من 23-12-2025 (ما قبل ذلك يراجع الـ MOB). في العقود غير المغطاة، تُعتمد فحوصات المرة الأولى لتأكيد التشخيص فقط. مرض الثعلبة (Alopecia) غير مغطى." 
+  },
+  { 
+    type: "note", 
+    title: "أشعة الصبغة (HSG)", 
+    text: "أشعة الصبغة على الرحم (Hystrosalpingography) غير مغطاة إلا إذا كانت البوليصة تغطي حالات العقم (Infertility)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Misr Insurance - الأسنان والنظر", 
+    text: "كشف الأسنان وكشف النظر مغطى حتى الحد الأقصى مع تطبيق نسبة التحمل الخاصة بالـ OP Consultation ما لم يذكر خلاف ذلك." 
+  },
+  { 
+    type: "note", 
+    title: "فحص البنتاكام (Pentacam)", 
+    text: "فحص Pentacam يغطى في حالتين: 1. إذا كان العقد يغطي عمليات الليزك (كفحص ما قبل العملية). 2. لحالات القرنية المخروطية إذا كان العقد يغطي العيوب الخلقية (Congenital)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Emirates NBD (Orient) - أكياس المبيض", 
+    text: "تشخيص أكياس المبيض (Ovarian cyst) مغطى ويشمل كافة الخدمات المتعلقة (كشوفات، تحاليل، أدوية هرمونية، وأشعة بما فيها الـ 4D)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Dar Cairo (Allianz) - العقم والعيوب الخلقية", 
+    text: "حالات العقم (Infertility) للذكور والإناث مغطاة بحد فرعي 15 ألف جنيه. العيوب الخلقية للبالغين مغطاة أيضاً بنفس الحد الفرعي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Carrefour - فئات C(N) و CF(N)", 
+    text: "لموظفي كارفور فئات C(N) و CF(N): يوجد حد فرعي للأمراض المزمنة والسابقة للتعاقد؛ يجب حساب الاستهلاك يدوياً والرجوع للـ TOB للتأكد من المبالغ." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient & Royal - حدود أدوية المزمن", 
+    text: "إذا كان للعقد حد منفصل للأدوية العادية وحد آخر للمزمن (Chronic/Pre-ex): في حالة انتهاء حد الأدوية العادية، يمكن صرف أدوية الحالات المزمنة أو الحرجة من الحد الخاص بها مباشرة ولا تُرفض." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Royal - أقراص الاستحلاب", 
+    text: "أقراص الاستحلاب المسموح بها هي (Lary pro, Bradoral, Strepsils). أي أنواع أخرى (Candy lozenges) تعتبر غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - فيتامين E ومضادات الأكسدة", 
+    text: "فيتامين E ومضادات الأكسدة تُغطى إذا كانت لضرورة طبية لحالات مغطاة (مثل ارتفاع دهون الدم)، وتُرفض في حالة عدم وجود ضرورة طبية أو إذا كانت لمرض مستثنى." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - الشامبو والمطهرات", 
+    text: "الشامبو الطبي (Medicated Shampoos) والمحاليل المطهرة (Antiseptic Solutions) مستثناة تماماً وغير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "بوالص Allianz المطبق عليها إجراءات المرونة", 
+    text: "الشركات المطبق عليها الـ Flexibility هي: Orange, Schlumberger, AAIB, Levare, Embassy of Netherlands, L'Oreal, U consumer finance, NCR ATM EG LLC." 
+  },
+  { 
+    type: "note", 
+    title: "برنامج دعم المرضى (PSP) - شريك Ray", 
+    text: "برنامج توفير أدوية مجانية (Sanofi/AbbVie): تصدر الموافقة على الصيدلية المطلوبة، ويُضاف ملاحظة بالكمية الإضافية المجانية من Ray. يشترط احتفاظ العميل بالعبوات الفارغة لتسليمها لشركة Ray، وأن تكون الروشتة أصلية ومختومة (صلاحية 6 أشهر). يتم التواصل مع العميل خلال 48 ساعة والتوصيل خلال 72 ساعة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة المرطبات (AWC vs Allianz)", 
+    text: "تغطية المرطبات في AWC تختلف عن Allianz؛ حيث تغطي AWC المرطبات ذات الأصل الصيدلاني (مثل Panthenol و Calamine) للضرورة الطبية. ملحوظة: Calamine يغطى للجلد ولكن يستثنى في حالات علاج حب الشباب." 
+  },
+  { 
+    type: "note", 
+    title: "حالات هرمون اللبن (Prolactinemia)", 
+    text: "تُغطى حالات اضطراب هرمون اللبن (Hypo/Hyperprolactinemia) لشركتي Allianz و Orient في الحالات المرضية (Pathological Cases) فقط." 
+  },
+  { 
+    type: "note", 
+    title: "تصنيف دواء Sideral Active", 
+    text: "يعتبر Sideral Active مكملاً للحديد (Iron supplement) ويُعامل معاملة أدوية الحديد، ولا يعتبر فيتامينات متعددة (Multi-vitamin)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - كريمات المساج", 
+    text: "كريمات وجل المساج (Massage cream/gel/spray) مستثناة في نظام الـ PK، ولكن يتم الموافقة عليها بشكل طبيعي في الموافقات المنفصلة (Scattered)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة نهضة مصر (Orient) - الأدوية المرفوضة", 
+    text: "لعقد نهضة مصر: تُرفض الأدوية التالية في جميع أنواع الموافقات (Acute/Scattered/PK): 1. أي دواء يحتوي على كولاجين (مثل CH Alpha و Genuphil Advance). 2. كريمات وجل وبخاخات المساج. 3. أدوية البروبيوتيك (Probiotics)." 
+  },
+  { 
+    type: "note", 
+    title: "تحليل مقاومة الأنسولين (HOMA-IR)", 
+    text: "تحليل HOMA-IR مستثنى لجميع الجهات (حتى مع وجود إجراءات المرونة) إلا إذا ذكر نصاً في الـ TOB أو الـ PGN أنه مغطى." 
+  },
+  
+  { 
+    type: "note", 
+    title: "جرعات Physiomer Nasal Spray", 
+    text: "لحالات الجيوب الأنفية: عبوة واحدة لكل 10 أيام (بحد أقصى 3 عبوات). لحالات ما بعد العمليات: تُعتمد الكمية كاملة حسب الحالة الطبية (تصل لـ 10 عبوات)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Royal - دواء L-carnitine", 
+    text: "يُغطى دواء L-carnitine في ثلاث حالات فقط: الصرع (Epilepsy)، الفشل الكلوي (Renal failure)، والتهاب عضلة القلب (Myocarditis)." 
+  },
+  { 
+    type: "note", 
+    title: "تدوين الملاحظات الطبية - رموز التغطية", 
+    text: "لتتبع استهلاك العملاء، يجب إضافة الجمل التالية في الـ Medical Notes حرفياً: *(benefit-critical)* للحالات الحرجة، و *(benefit-preex)* للحالات السابقة للتعاقد (إذا استخدم العميل خدمة مزمنة في أول 3 أشهر من اشتراكه). يطبق هذا على كافة البوالص." 
+  },
+  { 
+    type: "note", 
+    title: "كريمات Hyalo 4 وعلاج الندبات", 
+    text: "Hyalo 4 Skin و Hyalo 4 Star مستثناة، بينما Hyalo 4 Control مغطى. لشركة Orient: تُغطى كريمات الندبات (Scaro, Hyalo) والمساعدات الطبية إذا كان السبب حادثاً مغطى. حقن المفاصل Hyalo مغطاة للركبة فقط ومستثناة للكتف." 
+  },
+  { 
+    type: "note", 
+    title: "منشطات الدورة الدموية المخية", 
+    text: "تُغطى منشطات الدورة الدموية في حالات الدوار (Dizziness) وتُرفض في حالات الصداع. دواء Cerebrolysin يُعتمد لإصابات الدماغ والجلطات، وفي حالات الانزلاق الغضروفي (Disc)، ولكن يُرفض في حالات التهاب المفاصل أو الأعصاب العادي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Selenium ACE - مضادات الأكسدة", 
+    text: "يُغطى Selenium ACE كمضاد للأكسدة إذا وصف لحالات (نشاط الغدة، ارتفاع دهون الدم، اضطرابات الكبد أو الكلى) ما لم يكن مستثنى في الـ PGN." 
+  },
+  { 
+    type: "note", 
+    title: "الرضاعة الطبيعية (Breastfeeding)", 
+    text: "لشركة Orient: تُغطى خدمات الرضاعة ومتابعة ما بعد الولادة لمدة 45 يوماً فقط من ليميت الأمومة. لشركة Allianz: الرضاعة وكافة الخدمات المتعلقة بها مستثناة تماماً." 
+  },
+  { 
+    type: "note", 
+    title: "سونار Elastography", 
+    text: "سونار Elastography يستخدم لقياس صلابة الأعضاء (تليف الكبد أو الأورام). يجب التأكد من توفر ليميت الأمراض المزمنة (Chronic) قبل إصدار الموافقة لأنها تعتبر مشكلة مزمنة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Allianz - فحوصات وأدوية المرة الأولى", 
+    text: "تُعتمد أدوية المرة الأولى لأمراض الصدر والجهاز الهضمي حتى في حالة عدم وجود غطاء للمزمن. كما تُغطى فحوصات المرة الأولى للأمراض المزمنة والسابقة للتعاقد لجميع بوالص Allianz." 
+  },
+    {
+    type: "note",
+    title: "قواعد الموافقة على الخدمات الأساسية",
+    text: "1. يجب التحقق من صلاحية الكارت التأميني\n2. التأكد من غطاء الخدمة المطلوبة\n3. مراجعة الحد الأقصى للمبلغ المسموح\n4. التحقق من عدم استهلاك الوعاء التأميني\n5. طلب المستندات الداعمة إن لزم الأمر"
+  },
+  {
+    type: "note",
+    title: "تغطية الأدوية النفسية - Orient & Alex Bank",
+    text: "Under Orient for alex bank G1,2,3 Etisalat Egypt - Etisalat global services\n\nPsychiatric antidepressants medications (like: Cymbatex, Dogmatil) are covered as long as the diagnosis is not Psychiatric and the prescription is not written by psychiatrist.\n\nFor Alex bank G4 there are 2 scenarios:\n1 - Anti-depressants if prescribed by a neurologist or osteopath for Non-Psychiatric disorder and medically indicated (i.e Disc), will be rejected unless received from the authorized contacts we will approve exceptionally the rejected medications upon their request.\n\n2- psychiatric disorders & Radiofrequency cases will be approved case by case from the bank, please refer to CR team to communicate with the bank\n\nStandard Chartered Bank (AA) cover psychiatric treatment to 8k"
+  },
+  {
+    type: "note",
+    title: "تغطية الأمراض النفسية - Allianz",
+    text: "Under Allianz:\n- For CIB Employees: they cover psychiatric disorders (OP) if not related to alcohols or Addiction\n- For Unilever: Psychiatric treatment Up to 20,000 for Outpatient consultations, medications, investigations\n- For Schlumberger: psychiatric treatment: Only out-patient services will be covered up to 25000 sublimit"
+  },
+  {
+    type: "note",
+    title: "تغطية الأمراض النفسية - شركات أخرى",
+    text: "MM.CME FZ LLC (Egypt) cover Consultations with psychiatrists and psychologists\n\nFor EG Bank Employee and Families: fully cover neuro and psychiatric disorders باستثناء الامراض العقلية\n\nFor Delta insurance policies: The use of antipsychiatry medications for other medical conditions is covered.\n\nFor Royal policies: Cymbatex and other Psychiatric Anti-depressants medications will be covered if medically indicated under any non-Psychiatric diagnosis such as (Neurological, orthopedic disorders)\n\nFor Tokio Marine policies: Anti-epileptic medications and Psychiatric Anti-depressants medications will be covered if medically indicated under any non-Psychiatric diagnosis such as (neuritis, orthopedic disorders, ..etc)\n\nFor Toyota Motor Engineering under TM: Psychiatrist Pool (Doctor visit ONLY). Annually up to EGP 10,000"
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على فيتامين د - Allianz",
+    text: "For Allianz:\n· Vitamin D Lab test will be approved only in case of Significant renal or liver disease, Osteomalacia, Osteopenia, osteoporosis, Possible cases of rickets (age under 4 years old), Malabsorption syndrome, Vitamin D deficiency and Thyroid Disorder.\n· Vitamin D medications will be approved directly if there are symptoms till relieving of the symptoms including Pain/strain/fatigue/fracture diagnosis without asking for lab results"
+  },
+  {
+    type: "note",
+    title: "استخدام H2 blockers و PPI معًا",
+    text: "معظم ال Guidelines بتوضح أن اضافتهم لبعض ملهاش تأثير علاجي زيادة. إلا ان في بعض المصادر بتقول اننا ممكن نستخدمهم بالتبادل في أوقات متفاوتة علشان ن control ال High acid secretion.\n\nدا غير ان في severe cases بتستدعي اننا نستخدمهم مع بعض زي ال peptic ulcers, Hiatus hernia causes severe GERD, Zolinger - Ellison syndrome.\n\nوكمان الدكاترة بال medical practice بيكتبوا الاتنين مع بعض لأن في بعض الحالات بتكون مش مستجيبه لنوع واحد من الأدوية. بس بيفضل ان يبقي في وقت طويل بين جرعة كل دوا منهم عشان ميوقفوش بعض."
+  },
+  {
+    type: "note",
+    title: "الفرق بين Vonoprazan و PPIs التقليدية",
+    text: "Difference between Vonoprazan and other conventional PPIs:\n\nPPI enters parietal cell in inactive form and requires acid activation while potassium-competitive acid blocker (P-CAB) like Vonoprazan enters parietal in active form, has stability in an acidic environment, and does not require acid activation"
+  },
+  {
+    type: "note",
+    title: "YAG laser في طب العيون",
+    text: "The YAG laser is commonly used in ophthalmology for a procedure called YAG laser capsulotomy. This procedure is often performed to treat posterior capsule opacification (PCO), a common complication that can occur after cataract surgery.\n\nThe YAG laser used to create an opening in the cloudy posterior capsule. This allows light to pass through and reach the retina, restoring clear vision.\n\nThe procedure is taking less than 20 minutes, and is performed on an outpatient basis. Most patients experience improved vision within 24 hours. There is usually no pain, and patients can return to their normal activities the next day."
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على الخدمات - G4 policy",
+    text: "The note only exists in G4 policy.\n\nSo, for G4 below 3000 will proceed directly without referring back to Bank.\nIf more than 3000 will refer back to Bank unless if beneficiary remark added will proceed directly.\n\nAnd for G2 & G3 will refer back to bank whatever the cost is.\n\nFor G1 will be as well as every other policy."
+  },
+  {
+    type: "note",
+    title: "تغطية الاضطرابات الهرمونية - حسب كل باير",
+    text: "Notes regarding hormonal disturbances, evaluation & therapy:\n\nFor Allianz & Orient & Egyptian tkaful & Misr life insurance:\nCases related to Menstrual Cycle In which the chief complaint is Oligomenorrhea, intermittent Period, and Menorrhagia as well as Ovarian Cysts we release Radiology investigations and Laboratory lab tests except Hormonal Profile. No treatment to be accepted except those targeting to stop bleeding.\n(Except Dar Cairo covered with 15000 sublimit)\n\nFor Misr Insurance & CHUBB & Tokiomarine & Misr life Takaful:\nHormonal disturbances are covered if not related to infertility.\n\nFor Royal:\nEndometriosis is covered (excluding hormonal therapy or hormonal labs) as long as it is not related to infertility.\nHormonal disturbances conditions is covered if not related to infertility but no hormonal investigations or hormonal medications to be accepted.\n\nFor Delta:\nHormonal treatment excluded for fertility related diseases (PCO, endometriosis, irregular cycle …etc) and Growth hormonal therapy, also hormonal investigations will not be covered.\n\nFor MADA:\nHormonal disturbances even if not related to infertility are Not Covered.\n\nFor Mohandes:\nApprove Hormonal Treatment and investigations only in cases of pituitary disorders and Cancer while all other Hormonal disturbances whether related or not related to infertility are not covered.\n\nFor Sarwa:\nAll hormonal medications and labs are excluded except in evident tumor cases.\n\nFor Salama:\nAny hormonal disturbance related to infertility is not covered, while any case with hormonal disturbances not related to infertility will be referred to the payer case by case."
+  },
+  {
+    type: "note",
+    title: "الموافقة على Moist-1 cream",
+    text: "Update on this\n\nPlease approve Moist-1 cream normally for payers who cover emollients from pharmaceutical companies."
+  },
+  {
+    type: "note",
+    title: "فيتامين E ومضادات الأكسدة",
+    text: "As per bahgat note:\n- Vitamin E and any other antioxidants are covered for hyperlipidemia & epilepsy but check the coverage of vitamins first upon the contract."
+  },
+  {
+    type: "note",
+    title: "استخدام حقل Business Consideration",
+    text: "In case there is a Policy/Note that requires \"Business Consideration\" for a certain Benefit, this means you have to mention the Cost in \"Business Consideration\" field in Precertification Screen, same as the Estimated Cost approved.\n\nThis notifies the Payer instantly about the Transaction made for financial purposes.\n\nOnly use this field & mention the cost in \"Business Consideration\" if clearly requested by Policy Notes, don't use it for regular Claims."
+  },
+  {
+    type: "note",
+    title: "الموافقات خلال عطلات نهاية الأسبوع - OP cases",
+    text: "During Weekends only:\n\nany Price Approval (for OP cases only) that does not exceed 10,000 EGP, please proceed directly without referring back to MPM Team.\n\nOnce issued, please send the case to MPM team via mail as a Notification with full details, not as a Request for their Approval, no just send as a Notification to let them negotiate the Price list with the Provider furthermore."
+  },
+  {
+    type: "note",
+    title: "تغطية منتجات Hyalo",
+    text: "Please note that Hyalo 4 Skin and Hyalo 4 Star (Sodium Hyaluronate) are not covered, as they are intended for healing purposes, except for Hyalo 4 Control, which contains a bactericidal component. The same active ingredient is also used for intra-articular injection, but only in the knee joint, and it is not FDA-approved for injection into the shoulder joint."
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على فيتامين د - محدثة",
+    text: "قواعد فيتامين د من الآن:\n\nللتحليل: يتم الموافقة عليه في أي مشكلة لها علاقة بالعظام او الغدة او مشاكل الكلى وما الى ذلك، وكذلك لو التشخيص Fatigue. مشاكل العظام زي: bone ache, Disc, Arthritis, and so on (وليس LBP or pain in joints).\n\nهذا لكل الpayers ما عدا اللي حاطين اشتراطات (مثل Allianz, Mada, & MI). مع ضرورة مراجعة PGN باستمرار.\n\nللأدوية: يجب التأكد أولاً من وجود نقص فيتامين د بإرسال التحليل. يستثنى من ذلك حالات هشاشة العظام او الكسر او الغدة وغيرهم.\n\nمثال: لا يتم الموافقة على فيتامين د لتشخيص Polyarthritis مع وجود أشعة فقط، لأن نقص فيتامين د قد يكون سبباً وليس السبب الوحيد.\n\nملاحظة: Orient with flexibility يتم الموافقة مباشرة بدون تحليل."
+  },
+  {
+    type: "note",
+    title: "جزء maternity - عقد Orange",
+    text: "بالنسبة لجزء maternity لعقد Orange:\n\nFirst check the category.\n\nFor Category I: maternity is not covered.\n\nFor Category H: has limit 1500k with 20% copayment for antenatal and postnatal consultation and US (2D).\n\nFor Categories A, C, E, and F: have limit 3000k with 20% copayment for antenatal and postnatal consultation and US (2D).\n\nIn addition to the limit of the delivery for each category.\n\nOtherwise any service will be from the celling."
+  },
+  {
+    type: "note",
+    title: "تغطية مثبطات الفوسفوديستيراز - حسب كل باير",
+    text: "For Phosphodiesterase inhibitors drugs:\n\nOrient: Phosphodiesterase inhibitors (ex: Viagra, sildenafil, cialis) under diagnosis BPH, prostatitis will be covered regardless drug concentration.\n\nAllianz: Same like Orient.\n\nRoyal: Sexual tonics like (starkoprex, diamonrecta, …) are not covered regardless the diagnosis.\n\nMohandes: phosphodiesterase inhibitors for example: sildenafil under BPH are not covered."
+  },
+
+  { 
+    type: "note", 
+    title: "برنامج PSP - دواء Rinvoq (شركة AbbVie)", 
+    text: "يوجد خصم خاص من شركة Ray على دواء Rinvoq في جميع فروع صيدليات العزبي. يجب إصدار الموافقة بالسعر المخفض المذكور في شيت الـ PSP ليتم محاسبة العميل بناءً عليه." 
   }
 ],
   },
 ];
 
-/* ============================================================
-   STATE & RENDER
-============================================================ */
-let activeGroupId = GROUPS[0].id;
-let activeFilterId = GROUPS[0].filters?.[0]?.id || "all";
+let activeGroupId = "tatsh";
+let activeFilterId = "approved";
 let query = "";
 
 const tabsEl = document.getElementById("tabs");
@@ -462,17 +572,13 @@ const groupTitleEl = document.getElementById("groupTitle");
 const groupDescEl = document.getElementById("groupDesc");
 const searchInput = document.getElementById("searchInput");
 const resultCountEl = document.getElementById("resultCount");
+const noteModal = document.getElementById("noteModal");
+const noteTitle = document.getElementById("noteTitle");
+const noteContent = document.getElementById("noteContent");
+const closeNoteBtn = document.getElementById("closeNoteBtn");
 
 function getActiveGroup() {
   return GROUPS.find(g => g.id === activeGroupId) || GROUPS[0];
-}
-
-function visibleItemsFor(group) {
-  const q = query.trim().toLowerCase();
-  return group.items.filter(item => {
-    const filterOk = !group.filters || activeFilterId === "all" || item.filter === activeFilterId;
-    return filterOk && matchesQuery(item, q);
-  });
 }
 
 function renderTabs() {
@@ -481,16 +587,10 @@ function renderTabs() {
     const isActive = g.id === activeGroupId;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = [
-      "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-brand-500/30",
-      isActive
-        ? "bg-brand-600 border-brand-600 text-white shadow-card"
-        : "bg-white border-ink-300 text-ink-700 hover:border-brand-500 hover:text-ink-900"
-    ].join(" ");
-    btn.innerHTML = `
-      <span>${escapeHtml(g.title)}</span>
-      <span class="rounded-full px-1.5 text-xs ${isActive ? 'bg-white/20 text-white' : 'bg-ink-100 text-ink-500'}">${g.items.length}</span>
-    `;
+    btn.className = isActive 
+      ? "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium bg-brand-600 border-brand-600 text-white shadow-card transition-all hover:shadow-cardHover" 
+      : "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium bg-white border-ink-300 text-ink-700 hover:border-brand-500 transition-all";
+    btn.innerHTML = `<span>${g.title}</span><span class="rounded-full px-1.5 text-xs ${isActive ? 'bg-white/20 text-white' : 'bg-ink-100 text-ink-500'}">${g.items.length}</span>`;
     btn.addEventListener("click", () => {
       activeGroupId = g.id;
       activeFilterId = g.filters?.[0]?.id || "all";
@@ -505,25 +605,20 @@ function renderTabs() {
 function renderSubtabs() {
   const group = getActiveGroup();
   subtabsEl.innerHTML = "";
+  
   if (!group.filters) {
-    subtabsEl.classList.add("hidden");
-    subtabsEl.classList.remove("flex");
     return;
   }
-  subtabsEl.classList.remove("hidden");
-  subtabsEl.classList.add("flex");
+  
   group.filters.forEach(filter => {
     const count = group.items.filter(item => item.filter === filter.id).length;
     const isActive = activeFilterId === filter.id;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = [
-      "inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold transition-all focus:outline-none focus:ring-2 focus:ring-brand-500/30",
-      isActive
-        ? "bg-ink-900 border-ink-900 text-white"
-        : "bg-white border-ink-100 text-ink-500 hover:border-brand-500 hover:text-ink-900"
-    ].join(" ");
-    btn.innerHTML = `<span>${escapeHtml(filter.title)}</span><span class="opacity-70">${count}</span>`;
+    btn.className = isActive
+      ? "inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold bg-ink-900 border-ink-900 text-white transition-all hover:shadow-card"
+      : "inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold bg-white border-ink-100 text-ink-500 hover:border-brand-500 hover:text-ink-900 transition-all";
+    btn.innerHTML = `<span>${filter.title}</span><span class="opacity-70">${count}</span>`;
     btn.addEventListener("click", () => {
       activeFilterId = filter.id;
       renderAll();
@@ -533,58 +628,17 @@ function renderSubtabs() {
 }
 
 function typeBadge(type) {
-  if (type === "email") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-warn-50 text-warn-500 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-      بريد
-    </span>`;
-  }
-  if (type === "link") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-      رابط
-    </span>`;
-  }
-  if (type === "file") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-      ملف
-    </span>`;
-  }
-  if (type === "folder") {
-    return `<span class="inline-flex items-center gap-1 rounded-full bg-warn-50 text-warn-500 text-xs font-medium px-2 py-0.5">
-      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-      مجلد
-    </span>`;
-  }
-  return `<span class="inline-flex items-center gap-1 rounded-full bg-success-50 text-success-600 text-xs font-medium px-2 py-0.5">
-    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-    نص
-  </span>`;
-}
-
-function previewOf(item) {
-  if (item.type === "text")   return item.text || "";
-  if (item.type === "email")  return item.description || `mailto:${item.to}?cc=${item.cc || ''}&subject=${encodeURIComponent(item.subject)}&body=${encodeURIComponent(item.body)}إلى: ${item.to || "—"} • الموضوع: ${item.subject || "—"}mailto:${item.to}?cc=${item.cc || ''}&subject=${encodeURIComponent(item.subject)}&body=${encodeURIComponent(item.body)}`;
-  if (item.type === "link")   return item.description || item.href;
-  if (item.type === "file")   return item.description || item.href;
-  if (item.type === "folder") return item.description ? `${item.description}\n${item.path || ""}` : item.path;
-  return "";
-}
-
-function matchesQuery(item, q) {
-  if (!q) return true;
-  const hay = [
-    item.title || "",
-    item.text || "",
-    item.description || "",
-    item.subject || "",
-    item.body || "",
-    item.to || "",
-    item.href || "",
-    item.path || "",
-  ].join(" ").toLowerCase();
-  return hay.includes(q);
+  const badges = {
+    email: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>', label: "بريد", color: "bg-warn-50 text-warn-500" },
+    link: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>', label: "رابط", color: "bg-brand-50 text-brand-700" },
+    file: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>', label: "ملف", color: "bg-brand-50 text-brand-700" },
+    folder: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>', label: "مجلد", color: "bg-warn-50 text-warn-500" },
+    note: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>', label: "ملاحظة", color: "bg-success-50 text-success-600" },
+    text: { icon: '<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>', label: "نص", color: "bg-success-50 text-success-600" },
+  };
+  
+  const b = badges[type] || badges.text;
+  return `<span class="inline-flex items-center gap-1 rounded-full ${b.color} text-xs font-medium px-2 py-0.5">${b.icon}${b.label}</span>`;
 }
 
 function renderGrid() {
@@ -592,7 +646,13 @@ function renderGrid() {
   groupTitleEl.textContent = group.title;
   groupDescEl.textContent = group.description || "";
 
-  const items = visibleItemsFor(group);
+  const q = query.trim().toLowerCase();
+  const items = group.items.filter(item => {
+    const filterOk = !group.filters || activeFilterId === "all" || item.filter === activeFilterId;
+    const queryOk = !q || JSON.stringify(item).toLowerCase().includes(q);
+    return filterOk && queryOk;
+  });
+
   resultCountEl.textContent = `${items.length} عنصر`;
   gridEl.innerHTML = "";
 
@@ -603,18 +663,29 @@ function renderGrid() {
   emptyEl.classList.add("hidden");
 
   items.forEach((item) => {
-    const detail = item.href || item.path || "";
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "group relative flex h-full flex-col rounded-xl border border-ink-100 bg-white p-5 text-start shadow-card transition-all hover:-translate-y-0.5 hover:shadow-cardHover hover:border-brand-500/40 focus:outline-none focus:ring-2 focus:ring-brand-500/30";
+    card.className = "group relative flex h-full flex-col rounded-xl border border-ink-100 bg-white p-5 text-start shadow-card transition-all hover:-translate-y-0.5 hover:shadow-cardHover hover:border-brand-500/40 cursor-pointer";
+    
+    let preview = "";
+    if (item.type === "text") preview = item.text || "";
+    else if (item.type === "note") preview = item.text || "";
+    else if (item.type === "email") preview = item.description || `إلى: ${item.to}`;
+    else if (item.type === "link") preview = item.description || item.href;
+    else if (item.type === "file") preview = item.description || item.href;
+    else if (item.type === "folder") preview = item.description || item.path;
+    
+    const detail = item.href || item.path || "";
+    
     card.innerHTML = `
       <div class="flex items-center justify-between gap-2 mb-2">
-        <h3 class="text-sm font-bold leading-tight text-ink-900">${escapeHtml(item.title)}</h3>
+        <h3 class="text-sm font-bold leading-tight text-ink-900">${item.title}</h3>
         ${typeBadge(item.type)}
       </div>
-      <p class="line-clamp-3 whitespace-pre-line text-sm leading-relaxed text-ink-500">${escapeHtml(previewOf(item))}</p>
-      ${detail ? `<p class="mt-4 truncate rounded-lg bg-ink-50 px-2.5 py-2 text-xs font-medium text-ink-500" dir="ltr">${escapeHtml(detail)}</p>` : ""}
+      <p class="line-clamp-3 whitespace-pre-line text-sm leading-relaxed text-ink-500">${preview}</p>
+      ${detail ? `<p class="mt-4 truncate rounded-lg bg-ink-50 px-2.5 py-2 text-xs font-medium text-ink-500" dir="ltr">${detail}</p>` : ""}
     `;
+    
     card.addEventListener("click", () => handleAction(item, card));
     gridEl.appendChild(card);
   });
@@ -626,18 +697,31 @@ function renderAll() {
   renderGrid();
 }
 
-/* ============================================================
-   ACTIONS
-============================================================ */
+function openNoteModal(title, content) {
+  noteTitle.textContent = title;
+  noteContent.textContent = content;
+  noteModal.classList.remove("hidden");
+  noteModal.classList.add("flex");
+}
+
+function closeNoteModal() {
+  noteModal.classList.add("hidden");
+  noteModal.classList.remove("flex");
+}
+
 async function handleAction(item, cardEl) {
   if (item.type === "text") {
     const ok = await copyToClipboard(item.text || "");
     if (ok) {
       flashCard(cardEl, "success");
       toast({ title: "تم النسخ", desc: item.title, kind: "success" });
-    } else {
-      toast({ title: "تعذّر النسخ", desc: "حاول مرة أخرى أو انسخ النص يدوياً", kind: "error" });
     }
+    return;
+  }
+
+  if (item.type === "note") {
+    openNoteModal(item.title, item.text || "");
+    flashCard(cardEl, "info");
     return;
   }
 
@@ -650,22 +734,16 @@ async function handleAction(item, cardEl) {
   }
 
   if (item.type === "link") {
-    const win = window.open(item.href, "_blank", "noopener,noreferrer");
+    window.open(item.href, "_blank");
     flashCard(cardEl, "info");
-    toast(win
-      ? { title: "تم فتح الرابط", desc: item.title, kind: "info" }
-      : { title: "تعذّر الفتح", desc: "تأكد من السماح بالنوافذ المنبثقة", kind: "error" }
-    );
+    toast({ title: "تم فتح الرابط", desc: item.title, kind: "info" });
     return;
   }
 
   if (item.type === "file") {
-    const win = window.open(item.href, "_blank");
+    window.open(item.href, "_blank");
     flashCard(cardEl, "info");
-    toast(win
-      ? { title: "جارٍ فتح الملف", desc: item.title, kind: "info" }
-      : { title: "تعذّر الفتح", desc: "تأكد من وجود الملف بجانب index.html والسماح بالنوافذ المنبثقة", kind: "error" }
-    );
+    toast({ title: "جارٍ فتح الملف", desc: item.title, kind: "info" });
     return;
   }
 
@@ -674,21 +752,16 @@ async function handleAction(item, cardEl) {
     if (ok) {
       flashCard(cardEl, "success");
       toast({ title: "تم نسخ مسار المجلد", desc: "الصقه في File Explorer", kind: "success" });
-    } else {
-      toast({ title: "تعذّر نسخ المسار", desc: "انسخه يدوياً من البطاقة", kind: "error" });
     }
   }
 }
 
 function buildMailto({ to = "", cc = "", subject = "", body = "" }) {
   const params = [];
-
   if (cc) params.push("cc=" + encodeURIComponent(cc));
   if (subject) params.push("subject=" + encodeURIComponent(subject));
   if (body) params.push("body=" + encodeURIComponent(body));
-
-  return "mailto:" + encodeURIComponent(to).replace(/%40/g, "@") +
-    (params.length ? "?" + params.join("&") : "");
+  return "mailto:" + encodeURIComponent(to).replace(/%40/g, "@") + (params.length ? "?" + params.join("&") : "");
 }
 
 async function copyToClipboard(text) {
@@ -701,15 +774,10 @@ async function copyToClipboard(text) {
   try {
     const ta = document.createElement("textarea");
     ta.value = text;
-    ta.setAttribute("readonly", "");
     ta.style.position = "fixed";
-    ta.style.top = "0";
-    ta.style.left = "0";
     ta.style.opacity = "0";
     document.body.appendChild(ta);
-    ta.focus();
     ta.select();
-    ta.setSelectionRange(0, ta.value.length);
     const ok = document.execCommand("copy");
     document.body.removeChild(ta);
     return ok;
@@ -718,9 +786,6 @@ async function copyToClipboard(text) {
   }
 }
 
-/* ============================================================
-   FEEDBACK (flash + toast)
-============================================================ */
 function flashCard(el, kind) {
   const cls = kind === "success" ? "card-flash-success" : "card-flash-info";
   el.classList.add(cls);
@@ -729,24 +794,16 @@ function flashCard(el, kind) {
 
 function toast({ title, desc = "", kind = "success" }) {
   const wrap = document.getElementById("toasts");
-  const colors = {
-    success: "border-success-500/30 bg-white text-ink-900",
-    info:    "border-brand-500/30 bg-white text-ink-900",
-    error:   "border-red-300 bg-white text-ink-900",
-  };
-  const dot = {
-    success: "bg-success-500",
-    info:    "bg-brand-600",
-    error:   "bg-red-500",
-  }[kind] || "bg-success-500";
+  const colors = { success: "border-success-500/30 bg-white", info: "border-brand-500/30 bg-white", error: "border-red-300 bg-white" };
+  const dot = { success: "bg-success-500", info: "bg-brand-600", error: "bg-red-500" };
 
   const el = document.createElement("div");
-  el.className = `toast-enter min-w-[240px] max-w-[340px] rounded-lg border ${colors[kind] || colors.success} shadow-cardHover px-4 py-3 flex items-start gap-3`;
+  el.className = `toast-enter min-w-[240px] max-w-[340px] rounded-lg border ${colors[kind]} shadow-cardHover px-4 py-3 flex items-start gap-3`;
   el.innerHTML = `
-    <span class="mt-1.5 inline-block h-2 w-2 rounded-full ${dot}"></span>
+    <span class="mt-1.5 inline-block h-2 w-2 rounded-full ${dot[kind]}"></span>
     <div class="flex-1">
-      <div class="text-sm font-bold">${escapeHtml(title)}</div>
-      ${desc ? `<div class="text-xs text-ink-500 mt-0.5">${escapeHtml(desc)}</div>` : ""}
+      <div class="text-sm font-bold text-ink-900">${title}</div>
+      ${desc ? `<div class="text-xs text-ink-500 mt-0.5">${desc}</div>` : ""}
     </div>
   `;
   wrap.appendChild(el);
@@ -761,21 +818,18 @@ function toast({ title, desc = "", kind = "success" }) {
   }, 1800);
 }
 
-/* ============================================================
-   UTIL
-============================================================ */
-function escapeHtml(s) {
-  return String(s ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
 searchInput.addEventListener("input", (e) => {
   query = e.target.value;
   renderGrid();
+});
+
+closeNoteBtn.addEventListener("click", closeNoteModal);
+noteModal.addEventListener("click", (e) => {
+  if (e.target === noteModal) closeNoteModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeNoteModal();
 });
 
 renderAll();
