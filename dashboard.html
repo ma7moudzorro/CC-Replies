@@ -171,6 +171,7 @@ const GROUPS = [
       { type: "text", filter: "rejected", title: "رد إعادة الطلب", text: "برجاء الارسال عن طريق الايميل." },
       { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الحد الاقصي للتغطية التأمينية للعميل." },
       { type: "text", filter: "rejected", title: "رد اعتذار رسمي", text: "تم استهلاك الوعاء التأميني المتاح للأمراض المزمنة" },
+      { type: "text", filter: "rejected", title: "Auth person", text: "برجاء الارسال عن طريق الشخص المختص" },
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال تقرير الأشعة الداعم / الموضح للتشخيص . " },
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج التحاليل الداعمة / الموضحة للتشخيص ( مع ذكر التحليل المطلوب في حالة طلب تحليل محدد ) . " },
       { type: "text", filter: "pending", title: "رد قيد المراجعة", text: "برجاء ارسال نتائج الفحوصات الداعمة / الموضحة للتشخيص ." },
@@ -229,10 +230,12 @@ const GROUPS = [
     title: "Important Files",
     description: "ملفات محلية تفتح في المتصفح بمجرد الضغط عليها",
     items: [
-      { type: "file", title: "ملف PDF تجريبي", description: "policy.pdf — فتح ملف PDF من نفس مجلد الصفحة.", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/VIP%20instructions.jpg" },
-      { type: "file", title: "نموذج Excel", description: "assets-log.xlsx — فتح جدول العهد Excel من نفس المجلد.", href: "./assets-log.xlsx" },
-      { type: "file", title: "دليل الإجراءات", description: "procedures.docx — فتح مستند Word محلي.", href: "./procedures.docx" },
-      { type: "file", title: "تقرير شهري", description: "monthly-report.pdf — فتح ملف التقرير الشهري.", href: "file://egnc-fs01/OPS-01_Archive/Approvals-REQ/APPR-CS/Docss/OPS-Call%20Center/Support%20Line%20-%20Major%20Incident%20-%20IT%20Communications.jpeg" },
+      { type: "file", title: "VIP Instructions", description: "تعليمات التشغيل الخاصة بالكارت الذهبي VIP", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/VIP%20instructions.jpg" },
+{ type: "file", title: "One Stop Shop", description: "Allowed OP services in Hospitals / Polyclinics", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/One%20Stop%20Shop.png" },
+{ type: "file", title: "Osteoprosis + Epilepsy + Autoimmune Coverage", description: "Osteoprosis, Epilepsy, Autoimmune for all Payers", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/Auto%20immune%20+%20epilepsy%20+%20osteoprosis.png" },
+      { type: "file", title: "Cancellation process", description: "Policies that don't require cancellation process", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/cancellation.png" },
+      { type: "file", title: "Flexibility", description: "First time flexibility", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/flexability.png" },
+      { type: "file", title: "MW + Lozenges Covarege", description: "Mouthwashes, Lozenges, Vaginal Douches & Shockwaves for all policies", href: "file:///C:/Users/Mahmoud.Ramadan1/Desktop/Data/Mouth%20wash.png" },
     ],
   },
   {
@@ -244,6 +247,8 @@ const GROUPS = [
       { type: "folder", title: "Network", description: "NC Network Sheet", path: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Monthly Network" },
       { type: "folder", title: "POOLS", description: "NC Active Pools", path: "W:\\Claims\\Claims-Data\\Pools" },
       { type: "folder", title: "Chronic", description: "Chronic Shared Data", path: "W:\\Chronic\\Chronic-Data\\chronic shared" },
+{ type: "folder", title: "Medical Quality", description: "Medical Quality Audit", path: "\\EGNC-FS01\OPS-01_Archive\Approvals-REQ\APPR-CS\Docss\OPS-Call Center\Medical Quality Audit" },
+{ type: "folder", title: "PSP", description: "PSP Sheets & List", path: "W:\Approvals-REQ\PSP" },
       { type: "folder", title: "KPIs", description: "Daily Reports & KPIs", path: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\Reports\\Daily Reports\\KPIs" },
       { type: "folder", title: "NC Schedule", description: "NextCare Schedule", path: "\\\\EGNC-FS01\\OPS-01_Archive\\Approvals-REQ\\APPR-CS\\Docss\\OPS-Call Center\\NextCare sch" },
       { type: "folder", title: "PGN", description: "Payer General Notes", path: "W:\\Shared All Dep\\Shared All Dep Temp\\SharedAll-Policy Wording" },
@@ -255,10 +260,348 @@ const GROUPS = [
     description: "ملاحظات مهمة وملخصات سريعة",
     restrictedTo: ["Medical"],
     items: [
-      { type: "note", title: "عقد Future University - حدود الـ PK", text: "عقد Future University ليميت الـ PK فيه لـ Class B هو 2000 ج و Class C هو 1200 ج. الصرف يتم كل 30 يوماً؛ لذا إذا حاول العميل الصرف قبل مرور 30 يوماً سيظهر له نسبة تحمل عالية. يمكن عمل Void للصيدلية وتوجيه العميل للصرف بعد مرور الـ 30 يوماً بدلاً من طلب Override." },
-      { type: "note", title: "سياسة Orange - متابعة الحمل", text: "في بوليصة Orange: الأدوية والفحوصات الخاصة بالأمومة (Maternity) تُغطى من ليميت الـ AML (Physical illness). أما زيارات المتابعة والسونار تُغطى من ليميت الـ 3000 جنيه الخاص بالأمومة." },
-      { type: "note", title: "سياسة Royal - إلغاء الموافقات", text: "لجميع بوالص Royal: في حالة إلغاء الموافقة أو تغيير مقدم الخدمة، لا تطلب من العميل ختم الإلغاء من مقدم الخدمة. يطبق هذا على خدمات العيادات الخارجية (OP) بدون حد مالي. في حالات الـ IP يتم التواصل مع مقدم الخدمة للتأكد من الاستخدام." },
-      { type: "note", title: "سياسة Indevco (Orient) - طلبات المزمن", text: "لعقد Indevco تحت Orient: جميع طلبات الأدوية أو العلاج المزمن يجب أن ترسل من خلال جهات الاتصال المعتمدة (Authorized contacts). لا تُقبل الطلبات المباشرة من الأعضاء. يطبق هذا على نظام الـ PK فقط وليس الـ Scattered Chronic." },
+      { 
+    type: "note", 
+    title: "عقد Future University - حدود الـ PK", 
+    text: "عقد Future University ليميت الـ PK فيه لـ Class B هو 2000 ج و Class C هو 1200 ج. الصرف يتم كل 30 يوماً؛ لذا إذا حاول العميل الصرف قبل مرور 30 يوماً سيظهر له نسبة تحمل عالية. يمكن عمل Void للصيدلية وتوجيه العميل للصرف بعد مرور الـ 30 يوماً بدلاً من طلب Override." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orange - متابعة الحمل", 
+    text: "في بوليصة Orange: الأدوية والفحوصات الخاصة بالأمومة (Maternity) تُغطى من ليميت الـ AML (Physical illness). أما زيارات المتابعة والسونار تُغطى من ليميت الـ 3000 جنيه الخاص بالأمومة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Royal - إلغاء الموافقات", 
+    text: "لجميع بوالص Royal: في حالة إلغاء الموافقة أو تغيير مقدم الخدمة، لا تطلب من العميل ختم الإلغاء من مقدم الخدمة. يطبق هذا على خدمات العيادات الخارجية (OP) بدون حد مالي. في حالات الـ IP يتم التواصل مع مقدم الخدمة للتأكد من الاستخدام." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Indevco (Orient) - طلبات المزمن", 
+    text: "لعقد Indevco تحت Orient: جميع طلبات الأدوية أو العلاج المزمن يجب أن ترسل من خلال جهات الاتصال المعتمدة (Authorized contacts). لا تُقبل الطلبات المباشرة من الأعضاء. يطبق هذا على نظام الـ PK فقط وليس الـ Scattered Chronic." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة NTRA (Misr Insurance)", 
+    text: "لعقد NTRA تحت مصر للتأمين: تُعتمد الفيتامينات (Multivitamins) في حالة إرسال الطلب عبر الـ HR وتُغطى من الـ Exclusion pool. تنظيف الأسنان (Polishing) مغطى من مزايا الأسنان. تحليل HOMA-IR مغطى بحد أقصى سنوي." 
+  },
+  { 
+    type: "note", 
+    title: "عقد Allianz Individual - كشف النظر", 
+    text: "عقود Allianz Individual عادة ما تكون خدمات الأسنان والنظر بنظام الاسترداد (Reimbursement)، ولكن يمكن إصدار موافقة كشف النظر (ESE) من طرفنا مباشرة بناءً على ملاحظات الـ PGN." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Arab Bank (Allianz) - الحمل", 
+    text: "لعقد Arab Bank: فحوصات وأشعة وأدوية الـ ANC تُغطى من الـ AML (Physical illness). زيارات متابعة الحمل والسونار تُغطى مرة واحدة شهرياً بحد أقصى 250 جنيهاً." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Sukari Gold Mines (Orient) - المستلزمات", 
+    text: "جميع الغرسات الطبية (Medical Implants) مثل الشرائح والمسامير والدعامات وغيرها مغطاة لعقد Sukari Gold Mines تحت Orient." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Indevco (Orient) - ليميت الأدوية", 
+    text: "لعقد Indevco: يوجد ليميت أدوية 15 ألف جنيه لكل عضو (باستثناء أدوية الأسنان والأمومة والـ PK). أي تجاوز لهذا الحد يحتاج موافقة من Antoine Ghanem. الملحوظة موجودة في الـ Contract note فقط وليس الـ TOB." 
+  },
+  { 
+    type: "note", 
+    title: "خدمات الأسنان - Onlay & Inlay", 
+    text: "إجراءات الـ Onlay و Inlay لا تعتبر حشوات عادية بل تندرج تحت خدمات التعويضات (Prosthesis). يجب التأكد من غطاء الـ Prosthesis في البوليصة قبل القرار، إلا إذا ذكر غير ذلك في الـ PGN." 
+  },
+  { 
+    type: "note", 
+    title: "عقد BUE (Orient) - العلاج الطبيعي", 
+    text: "الموافقة على جلسات العلاج الطبيعي في مستشفيات منطقة الشروق استثنائياً عند الحاجة لعقد BUE تحت شركة أورينت." 
+  },
+  { 
+    type: "note", 
+    title: "جرعات بخاخات الأنف (Nasal Spray)", 
+    text: "الجرعة المعتمدة لبخاخات الأنف هي عبوة واحدة لكل 10 أيام في الحالات المتوسطة، وتزاد الكمية في حالات ما بعد العمليات الجراحية." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Tokio Marine - قطرات العين", 
+    text: "جميع أنواع قطرات Systane مستثناة لعقد Tokio Marine باستثناء بوالص Nissan و IBS Al Thuraya. يتم استبدالها بـ Poly Fresh في الـ PK." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Al-Wataniya - الفيتامينات والمناعة", 
+    text: "الفيتامينات للضرورة الطبية مغطاة، باستثناء فيتامين D (دواء) يغطى في حالات الحمل فقط. تحليل فيتامين D مستثنى تماماً. الأمراض المناعية (Autoimmune) غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "قيود تحليل فيتامين D للجهات المختلفة", 
+    text: "1. Allianz/Royal: يغطى في حالات أمراض الكلى/الكبد، لين العظام، الهشاشة، الكساح (تحت 4 سنوات)، سوء الامتصاص، واضطراب الغدة الدرقية.\n2. Delta: نفس حالات Allianz بالإضافة إلى الكسور ونقص الفيتامين؛ ويرفض في حالات الإجهاد/الألم.\n3. Iskan: يغطى لحالات التهاب المفاصل فقط.\n4. Mohandes: يغطى لاضطرابات الغدة أو إذا وصفه طبيب عظام/أعصاب.\n5. Platinum/Mada: غير مغطى تماماً." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة TMG (Misr Insurance) - المستشفيات المستثناة", 
+    text: "لعقد TMG تحت مصر للتأمين: المستشفيات التالية مستثناة من البوليصة بالكامل: الجنزوري، أندلسية، تاون، النزهة الدولي، والكويتي ببنها." 
+  },
+  { 
+    type: "note", 
+    title: "تحديث Allianz - الفيتامينات المتعددة", 
+    text: "يتم قبول الفيتامينات المتعددة (Multivitamins) في حالات تؤثر على الامتصاص مثل: أمراض كروان والقولون، أمراض الكبد والبنكرياس والمرارة، الأمراض المناعية، وحالات العلاج الإشعاعي أو الكيماوي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة إزالة الثآليل (Wart Removal)", 
+    text: "1. Delta: تعليق الطلب (Pend) للاستفسار عن السبب التجميلي.\n2. Misr Insurance: ثآليل الوجه والأعضاء التناسلية غير مغطاة.\n3. Allianz: تعليق ثآليل الوجه للاستفسار عن السبب التجميلي.\n4. Royal: ثآليل القدم فقط مغطاة.\n5. Egyptian Takaful: ثآليل الأعضاء التناسلية غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "تحديث Allianz - التحاليل الجينية", 
+    text: "التحاليل الجينية (Genetic testing) غير مغطاة إلا في حالات السرطان فقط." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Misr Insurance - التصلب المتعدد (MS)", 
+    text: "مرض التصلب المتعدد (Multiple sclerosis) يكون مغطى في حالة تغطية الأمراض المناعية في العقد." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة NTRA (Misr Insurance) - حمل", 
+    text: "جلسات الحديد للأمومة ومضاعفاتها مغطاة حتى الحد الأقصى السنوي لعقد NTRA تحت مصر للتأمين." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Tokio Marine - الأمراض المناعية", 
+    text: "الأمراض المناعية مغطاة لجميع البوالص بدءاً من 23-12-2025 (ما قبل ذلك يراجع الـ MOB). في العقود غير المغطاة، تُعتمد فحوصات المرة الأولى لتأكيد التشخيص فقط. مرض الثعلبة (Alopecia) غير مغطى." 
+  },
+  { 
+    type: "note", 
+    title: "أشعة الصبغة (HSG)", 
+    text: "أشعة الصبغة على الرحم (Hystrosalpingography) غير مغطاة إلا إذا كانت البوليصة تغطي حالات العقم (Infertility)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Misr Insurance - الأسنان والنظر", 
+    text: "كشف الأسنان وكشف النظر مغطى حتى الحد الأقصى مع تطبيق نسبة التحمل الخاصة بالـ OP Consultation ما لم يذكر خلاف ذلك." 
+  },
+  { 
+    type: "note", 
+    title: "فحص البنتاكام (Pentacam)", 
+    text: "فحص Pentacam يغطى في حالتين: 1. إذا كان العقد يغطي عمليات الليزك (كفحص ما قبل العملية). 2. لحالات القرنية المخروطية إذا كان العقد يغطي العيوب الخلقية (Congenital)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Emirates NBD (Orient) - أكياس المبيض", 
+    text: "تشخيص أكياس المبيض (Ovarian cyst) مغطى ويشمل كافة الخدمات المتعلقة (كشوفات، تحاليل، أدوية هرمونية، وأشعة بما فيها الـ 4D)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Dar Cairo (Allianz) - العقم والعيوب الخلقية", 
+    text: "حالات العقم (Infertility) للذكور والإناث مغطاة بحد فرعي 15 ألف جنيه. العيوب الخلقية للبالغين مغطاة أيضاً بنفس الحد الفرعي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Carrefour - فئات C(N) و CF(N)", 
+    text: "لموظفي كارفور فئات C(N) و CF(N): يوجد حد فرعي للأمراض المزمنة والسابقة للتعاقد؛ يجب حساب الاستهلاك يدوياً والرجوع للـ TOB للتأكد من المبالغ." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient & Royal - حدود أدوية المزمن", 
+    text: "إذا كان للعقد حد منفصل للأدوية العادية وحد آخر للمزمن (Chronic/Pre-ex): في حالة انتهاء حد الأدوية العادية، يمكن صرف أدوية الحالات المزمنة أو الحرجة من الحد الخاص بها مباشرة ولا تُرفض." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Royal - أقراص الاستحلاب", 
+    text: "أقراص الاستحلاب المسموح بها هي (Lary pro, Bradoral, Strepsils). أي أنواع أخرى (Candy lozenges) تعتبر غير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - فيتامين E ومضادات الأكسدة", 
+    text: "فيتامين E ومضادات الأكسدة تُغطى إذا كانت لضرورة طبية لحالات مغطاة (مثل ارتفاع دهون الدم)، وتُرفض في حالة عدم وجود ضرورة طبية أو إذا كانت لمرض مستثنى." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - الشامبو والمطهرات", 
+    text: "الشامبو الطبي (Medicated Shampoos) والمحاليل المطهرة (Antiseptic Solutions) مستثناة تماماً وغير مغطاة." 
+  },
+  { 
+    type: "note", 
+    title: "بوالص Allianz المطبق عليها إجراءات المرونة", 
+    text: "الشركات المطبق عليها الـ Flexibility هي: Orange, Schlumberger, AAIB, Levare, Embassy of Netherlands, L'Oreal, U consumer finance, NCR ATM EG LLC." 
+  },
+  { 
+    type: "note", 
+    title: "برنامج دعم المرضى (PSP) - شريك Ray", 
+    text: "برنامج توفير أدوية مجانية (Sanofi/AbbVie): تصدر الموافقة على الصيدلية المطلوبة، ويُضاف ملاحظة بالكمية الإضافية المجانية من Ray. يشترط احتفاظ العميل بالعبوات الفارغة لتسليمها لشركة Ray، وأن تكون الروشتة أصلية ومختومة (صلاحية 6 أشهر). يتم التواصل مع العميل خلال 48 ساعة والتوصيل خلال 72 ساعة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة المرطبات (AWC vs Allianz)", 
+    text: "تغطية المرطبات في AWC تختلف عن Allianz؛ حيث تغطي AWC المرطبات ذات الأصل الصيدلاني (مثل Panthenol و Calamine) للضرورة الطبية. ملحوظة: Calamine يغطى للجلد ولكن يستثنى في حالات علاج حب الشباب." 
+  },
+  { 
+    type: "note", 
+    title: "حالات هرمون اللبن (Prolactinemia)", 
+    text: "تُغطى حالات اضطراب هرمون اللبن (Hypo/Hyperprolactinemia) لشركتي Allianz و Orient في الحالات المرضية (Pathological Cases) فقط." 
+  },
+  { 
+    type: "note", 
+    title: "تصنيف دواء Sideral Active", 
+    text: "يعتبر Sideral Active مكملاً للحديد (Iron supplement) ويُعامل معاملة أدوية الحديد، ولا يعتبر فيتامينات متعددة (Multi-vitamin)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Orient - كريمات المساج", 
+    text: "كريمات وجل المساج (Massage cream/gel/spray) مستثناة في نظام الـ PK، ولكن يتم الموافقة عليها بشكل طبيعي في الموافقات المنفصلة (Scattered)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة نهضة مصر (Orient) - الأدوية المرفوضة", 
+    text: "لعقد نهضة مصر: تُرفض الأدوية التالية في جميع أنواع الموافقات (Acute/Scattered/PK): 1. أي دواء يحتوي على كولاجين (مثل CH Alpha و Genuphil Advance). 2. كريمات وجل وبخاخات المساج. 3. أدوية البروبيوتيك (Probiotics)." 
+  },
+  { 
+    type: "note", 
+    title: "تحليل مقاومة الأنسولين (HOMA-IR)", 
+    text: "تحليل HOMA-IR مستثنى لجميع الجهات (حتى مع وجود إجراءات المرونة) إلا إذا ذكر نصاً في الـ TOB أو الـ PGN أنه مغطى." 
+  },
+  
+  { 
+    type: "note", 
+    title: "جرعات Physiomer Nasal Spray", 
+    text: "لحالات الجيوب الأنفية: عبوة واحدة لكل 10 أيام (بحد أقصى 3 عبوات). لحالات ما بعد العمليات: تُعتمد الكمية كاملة حسب الحالة الطبية (تصل لـ 10 عبوات)." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Royal - دواء L-carnitine", 
+    text: "يُغطى دواء L-carnitine في ثلاث حالات فقط: الصرع (Epilepsy)، الفشل الكلوي (Renal failure)، والتهاب عضلة القلب (Myocarditis)." 
+  },
+  { 
+    type: "note", 
+    title: "تدوين الملاحظات الطبية - رموز التغطية", 
+    text: "لتتبع استهلاك العملاء، يجب إضافة الجمل التالية في الـ Medical Notes حرفياً: *(benefit-critical)* للحالات الحرجة، و *(benefit-preex)* للحالات السابقة للتعاقد (إذا استخدم العميل خدمة مزمنة في أول 3 أشهر من اشتراكه). يطبق هذا على كافة البوالص." 
+  },
+  { 
+    type: "note", 
+    title: "كريمات Hyalo 4 وعلاج الندبات", 
+    text: "Hyalo 4 Skin و Hyalo 4 Star مستثناة، بينما Hyalo 4 Control مغطى. لشركة Orient: تُغطى كريمات الندبات (Scaro, Hyalo) والمساعدات الطبية إذا كان السبب حادثاً مغطى. حقن المفاصل Hyalo مغطاة للركبة فقط ومستثناة للكتف." 
+  },
+  { 
+    type: "note", 
+    title: "منشطات الدورة الدموية المخية", 
+    text: "تُغطى منشطات الدورة الدموية في حالات الدوار (Dizziness) وتُرفض في حالات الصداع. دواء Cerebrolysin يُعتمد لإصابات الدماغ والجلطات، وفي حالات الانزلاق الغضروفي (Disc)، ولكن يُرفض في حالات التهاب المفاصل أو الأعصاب العادي." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Selenium ACE - مضادات الأكسدة", 
+    text: "يُغطى Selenium ACE كمضاد للأكسدة إذا وصف لحالات (نشاط الغدة، ارتفاع دهون الدم، اضطرابات الكبد أو الكلى) ما لم يكن مستثنى في الـ PGN." 
+  },
+  { 
+    type: "note", 
+    title: "الرضاعة الطبيعية (Breastfeeding)", 
+    text: "لشركة Orient: تُغطى خدمات الرضاعة ومتابعة ما بعد الولادة لمدة 45 يوماً فقط من ليميت الأمومة. لشركة Allianz: الرضاعة وكافة الخدمات المتعلقة بها مستثناة تماماً." 
+  },
+  { 
+    type: "note", 
+    title: "سونار Elastography", 
+    text: "سونار Elastography يستخدم لقياس صلابة الأعضاء (تليف الكبد أو الأورام). يجب التأكد من توفر ليميت الأمراض المزمنة (Chronic) قبل إصدار الموافقة لأنها تعتبر مشكلة مزمنة." 
+  },
+  { 
+    type: "note", 
+    title: "سياسة Allianz - فحوصات وأدوية المرة الأولى", 
+    text: "تُعتمد أدوية المرة الأولى لأمراض الصدر والجهاز الهضمي حتى في حالة عدم وجود غطاء للمزمن. كما تُغطى فحوصات المرة الأولى للأمراض المزمنة والسابقة للتعاقد لجميع بوالص Allianz." 
+  },
+    {
+    type: "note",
+    title: "قواعد الموافقة على الخدمات الأساسية",
+    text: "1. يجب التحقق من صلاحية الكارت التأميني\n2. التأكد من غطاء الخدمة المطلوبة\n3. مراجعة الحد الأقصى للمبلغ المسموح\n4. التحقق من عدم استهلاك الوعاء التأميني\n5. طلب المستندات الداعمة إن لزم الأمر"
+  },
+  {
+    type: "note",
+    title: "تغطية الأدوية النفسية - Orient & Alex Bank",
+    text: "Under Orient for alex bank G1,2,3 Etisalat Egypt - Etisalat global services\n\nPsychiatric antidepressants medications (like: Cymbatex, Dogmatil) are covered as long as the diagnosis is not Psychiatric and the prescription is not written by psychiatrist.\n\nFor Alex bank G4 there are 2 scenarios:\n1 - Anti-depressants if prescribed by a neurologist or osteopath for Non-Psychiatric disorder and medically indicated (i.e Disc), will be rejected unless received from the authorized contacts we will approve exceptionally the rejected medications upon their request.\n\n2- psychiatric disorders & Radiofrequency cases will be approved case by case from the bank, please refer to CR team to communicate with the bank\n\nStandard Chartered Bank (AA) cover psychiatric treatment to 8k"
+  },
+  {
+    type: "note",
+    title: "تغطية الأمراض النفسية - Allianz",
+    text: "Under Allianz:\n- For CIB Employees: they cover psychiatric disorders (OP) if not related to alcohols or Addiction\n- For Unilever: Psychiatric treatment Up to 20,000 for Outpatient consultations, medications, investigations\n- For Schlumberger: psychiatric treatment: Only out-patient services will be covered up to 25000 sublimit"
+  },
+  {
+    type: "note",
+    title: "تغطية الأمراض النفسية - شركات أخرى",
+    text: "MM.CME FZ LLC (Egypt) cover Consultations with psychiatrists and psychologists\n\nFor EG Bank Employee and Families: fully cover neuro and psychiatric disorders باستثناء الامراض العقلية\n\nFor Delta insurance policies: The use of antipsychiatry medications for other medical conditions is covered.\n\nFor Royal policies: Cymbatex and other Psychiatric Anti-depressants medications will be covered if medically indicated under any non-Psychiatric diagnosis such as (Neurological, orthopedic disorders)\n\nFor Tokio Marine policies: Anti-epileptic medications and Psychiatric Anti-depressants medications will be covered if medically indicated under any non-Psychiatric diagnosis such as (neuritis, orthopedic disorders, ..etc)\n\nFor Toyota Motor Engineering under TM: Psychiatrist Pool (Doctor visit ONLY). Annually up to EGP 10,000"
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على فيتامين د - Allianz",
+    text: "For Allianz:\n· Vitamin D Lab test will be approved only in case of Significant renal or liver disease, Osteomalacia, Osteopenia, osteoporosis, Possible cases of rickets (age under 4 years old), Malabsorption syndrome, Vitamin D deficiency and Thyroid Disorder.\n· Vitamin D medications will be approved directly if there are symptoms till relieving of the symptoms including Pain/strain/fatigue/fracture diagnosis without asking for lab results"
+  },
+  {
+    type: "note",
+    title: "استخدام H2 blockers و PPI معًا",
+    text: "معظم ال Guidelines بتوضح أن اضافتهم لبعض ملهاش تأثير علاجي زيادة. إلا ان في بعض المصادر بتقول اننا ممكن نستخدمهم بالتبادل في أوقات متفاوتة علشان ن control ال High acid secretion.\n\nدا غير ان في severe cases بتستدعي اننا نستخدمهم مع بعض زي ال peptic ulcers, Hiatus hernia causes severe GERD, Zolinger - Ellison syndrome.\n\nوكمان الدكاترة بال medical practice بيكتبوا الاتنين مع بعض لأن في بعض الحالات بتكون مش مستجيبه لنوع واحد من الأدوية. بس بيفضل ان يبقي في وقت طويل بين جرعة كل دوا منهم عشان ميوقفوش بعض."
+  },
+  {
+    type: "note",
+    title: "الفرق بين Vonoprazan و PPIs التقليدية",
+    text: "Difference between Vonoprazan and other conventional PPIs:\n\nPPI enters parietal cell in inactive form and requires acid activation while potassium-competitive acid blocker (P-CAB) like Vonoprazan enters parietal in active form, has stability in an acidic environment, and does not require acid activation"
+  },
+  {
+    type: "note",
+    title: "YAG laser في طب العيون",
+    text: "The YAG laser is commonly used in ophthalmology for a procedure called YAG laser capsulotomy. This procedure is often performed to treat posterior capsule opacification (PCO), a common complication that can occur after cataract surgery.\n\nThe YAG laser used to create an opening in the cloudy posterior capsule. This allows light to pass through and reach the retina, restoring clear vision.\n\nThe procedure is taking less than 20 minutes, and is performed on an outpatient basis. Most patients experience improved vision within 24 hours. There is usually no pain, and patients can return to their normal activities the next day."
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على الخدمات - G4 policy",
+    text: "The note only exists in G4 policy.\n\nSo, for G4 below 3000 will proceed directly without referring back to Bank.\nIf more than 3000 will refer back to Bank unless if beneficiary remark added will proceed directly.\n\nAnd for G2 & G3 will refer back to bank whatever the cost is.\n\nFor G1 will be as well as every other policy."
+  },
+  {
+    type: "note",
+    title: "تغطية الاضطرابات الهرمونية - حسب كل باير",
+    text: "Notes regarding hormonal disturbances, evaluation & therapy:\n\nFor Allianz & Orient & Egyptian tkaful & Misr life insurance:\nCases related to Menstrual Cycle In which the chief complaint is Oligomenorrhea, intermittent Period, and Menorrhagia as well as Ovarian Cysts we release Radiology investigations and Laboratory lab tests except Hormonal Profile. No treatment to be accepted except those targeting to stop bleeding.\n(Except Dar Cairo covered with 15000 sublimit)\n\nFor Misr Insurance & CHUBB & Tokiomarine & Misr life Takaful:\nHormonal disturbances are covered if not related to infertility.\n\nFor Royal:\nEndometriosis is covered (excluding hormonal therapy or hormonal labs) as long as it is not related to infertility.\nHormonal disturbances conditions is covered if not related to infertility but no hormonal investigations or hormonal medications to be accepted.\n\nFor Delta:\nHormonal treatment excluded for fertility related diseases (PCO, endometriosis, irregular cycle …etc) and Growth hormonal therapy, also hormonal investigations will not be covered.\n\nFor MADA:\nHormonal disturbances even if not related to infertility are Not Covered.\n\nFor Mohandes:\nApprove Hormonal Treatment and investigations only in cases of pituitary disorders and Cancer while all other Hormonal disturbances whether related or not related to infertility are not covered.\n\nFor Sarwa:\nAll hormonal medications and labs are excluded except in evident tumor cases.\n\nFor Salama:\nAny hormonal disturbance related to infertility is not covered, while any case with hormonal disturbances not related to infertility will be referred to the payer case by case."
+  },
+  {
+    type: "note",
+    title: "الموافقة على Moist-1 cream",
+    text: "Update on this\n\nPlease approve Moist-1 cream normally for payers who cover emollients from pharmaceutical companies."
+  },
+  {
+    type: "note",
+    title: "فيتامين E ومضادات الأكسدة",
+    text: "As per bahgat note:\n- Vitamin E and any other antioxidants are covered for hyperlipidemia & epilepsy but check the coverage of vitamins first upon the contract."
+  },
+  {
+    type: "note",
+    title: "استخدام حقل Business Consideration",
+    text: "In case there is a Policy/Note that requires \"Business Consideration\" for a certain Benefit, this means you have to mention the Cost in \"Business Consideration\" field in Precertification Screen, same as the Estimated Cost approved.\n\nThis notifies the Payer instantly about the Transaction made for financial purposes.\n\nOnly use this field & mention the cost in \"Business Consideration\" if clearly requested by Policy Notes, don't use it for regular Claims."
+  },
+  {
+    type: "note",
+    title: "الموافقات خلال عطلات نهاية الأسبوع - OP cases",
+    text: "During Weekends only:\n\nany Price Approval (for OP cases only) that does not exceed 10,000 EGP, please proceed directly without referring back to MPM Team.\n\nOnce issued, please send the case to MPM team via mail as a Notification with full details, not as a Request for their Approval, no just send as a Notification to let them negotiate the Price list with the Provider furthermore."
+  },
+  {
+    type: "note",
+    title: "تغطية منتجات Hyalo",
+    text: "Please note that Hyalo 4 Skin and Hyalo 4 Star (Sodium Hyaluronate) are not covered, as they are intended for healing purposes, except for Hyalo 4 Control, which contains a bactericidal component. The same active ingredient is also used for intra-articular injection, but only in the knee joint, and it is not FDA-approved for injection into the shoulder joint."
+  },
+  {
+    type: "note",
+    title: "قواعد الموافقة على فيتامين د - محدثة",
+    text: "قواعد فيتامين د من الآن:\n\nللتحليل: يتم الموافقة عليه في أي مشكلة لها علاقة بالعظام او الغدة او مشاكل الكلى وما الى ذلك، وكذلك لو التشخيص Fatigue. مشاكل العظام زي: bone ache, Disc, Arthritis, and so on (وليس LBP or pain in joints).\n\nهذا لكل الpayers ما عدا اللي حاطين اشتراطات (مثل Allianz, Mada, & MI). مع ضرورة مراجعة PGN باستمرار.\n\nللأدوية: يجب التأكد أولاً من وجود نقص فيتامين د بإرسال التحليل. يستثنى من ذلك حالات هشاشة العظام او الكسر او الغدة وغيرهم.\n\nمثال: لا يتم الموافقة على فيتامين د لتشخيص Polyarthritis مع وجود أشعة فقط، لأن نقص فيتامين د قد يكون سبباً وليس السبب الوحيد.\n\nملاحظة: Orient with flexibility يتم الموافقة مباشرة بدون تحليل."
+  },
+  {
+    type: "note",
+    title: "جزء maternity - عقد Orange",
+    text: "بالنسبة لجزء maternity لعقد Orange:\n\nFirst check the category.\n\nFor Category I: maternity is not covered.\n\nFor Category H: has limit 1500k with 20% copayment for antenatal and postnatal consultation and US (2D).\n\nFor Categories A, C, E, and F: have limit 3000k with 20% copayment for antenatal and postnatal consultation and US (2D).\n\nIn addition to the limit of the delivery for each category.\n\nOtherwise any service will be from the celling."
+  },
+  {
+    type: "note",
+    title: "تغطية مثبطات الفوسفوديستيراز - حسب كل باير",
+    text: "For Phosphodiesterase inhibitors drugs:\n\nOrient: Phosphodiesterase inhibitors (ex: Viagra, sildenafil, cialis) under diagnosis BPH, prostatitis will be covered regardless drug concentration.\n\nAllianz: Same like Orient.\n\nRoyal: Sexual tonics like (starkoprex, diamonrecta, …) are not covered regardless the diagnosis.\n\nMohandes: phosphodiesterase inhibitors for example: sildenafil under BPH are not covered."
+  },
+
+  { 
+    type: "note", 
+    title: "برنامج PSP - دواء Rinvoq (شركة AbbVie)", 
+    text: "يوجد خصم خاص من شركة Ray على دواء Rinvoq في جميع فروع صيدليات العزبي. يجب إصدار الموافقة بالسعر المخفض المذكور في شيت الـ PSP ليتم محاسبة العميل بناءً عليه." 
+  }
     ],
   },
 ];
